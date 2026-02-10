@@ -141,10 +141,6 @@ header {
  	   }
 }
 
-
-
-
-
 .category-card {
   background: var(--dark-light);
   border-radius: 15px;
@@ -217,9 +213,6 @@ header {
   padding: 15px;
 }
 
-
-
-
 .product-name {
   font-weight: 350;
   margin-bottom: 5px;
@@ -248,7 +241,6 @@ header {
 }
 
 @media (min-width: 441px ) {
-
 .btn-select {
   background: linear-gradient(to right, var(--primary), var(--primary-dark));
   color: white;
@@ -276,13 +268,12 @@ header {
   width: 100%;
 }
 
-
 .btn-select:hover {
   background: linear-gradient(to right, var(--primary-dark), var(--primary));
   box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
 }
 
-/* Модальное окно выбора вкуса */
+/* Модальные окна */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -363,6 +354,76 @@ header {
   padding: 20px;
 }
 
+/* Выбор способа доставки */
+.delivery-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.delivery-option {
+  background: var(--dark);
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.delivery-option:hover {
+  background: rgba(138, 43, 226, 0.1);
+  border-color: rgba(138, 43, 226, 0.3);
+}
+
+.delivery-option.selected {
+  background: rgba(138, 43, 226, 0.15);
+  border-color: var(--primary);
+}
+
+.delivery-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.delivery-info {
+  flex: 1;
+}
+
+.delivery-name {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.delivery-desc {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.delivery-check {
+  color: var(--primary);
+  font-size: 20px;
+  opacity: 0;
+}
+
+.delivery-option.selected .delivery-check {
+  opacity: 1;
+}
+
+/* Список вкусов */
 .flavor-list {
   display: flex;
   flex-direction: column;
@@ -689,6 +750,26 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .delivery-options {
+    flex-direction: row;
+  }
+  
+  .delivery-option {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .delivery-info {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .delivery-option {
+    flex-direction: row;
+  }
 }
 </style>
 </head>
@@ -747,273 +828,6 @@ header {
     </div>
   </div>
   
-<script>
-// ========== ОТПРАВКА ЗАКАЗА ==========
-
-// Функция для копирования заказа в буфер обмена
-function copyOrderToClipboard() {
-  if (cart.length === 0) {
-    showNotification('Корзина пуста');
-    return;
-  }
-  
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-  const orderNumber = 'ORD-' + Date.now().toString().slice(-6);
-  const timestamp = new Date().toLocaleString('ru-RU');
-  
-  // Формируем красивое сообщение для копирования
-  let message = `🛒 *НОВЫЙ ЗАКАЗ НА CLOUDHUB* 🛒\n`;
-  message += `📦 *Номер заказа:* ${orderNumber}\n`;
-  message += `⏰ *Дата и время:* ${timestamp}\n`;
-  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
-  message += `*ТОВАРЫ В ЗАКАЗЕ:*\n`;
-  
-  cart.forEach((item, index) => {
-    message += `${index + 1}. *${item.name}*\n`;
-    if (item.flavor) {
-      message += `   🍃 Вариант: ${item.flavor}\n`;
-    }
-    message += `   💰 Цена: ${item.price.toFixed(2)} zł\n`;
-    message += `   📂 Категория: ${item.category}\n`;
-    message += `\n`;
-  });
-  
-  message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `💰 *ИТОГО К ОПЛАТЕ:* ${total.toFixed(2)} zł\n\n`;
-  message += `👤 *Контакт менеджера:* @managercloudm\n`;
-  message += `📱 *Связь через:* Telegram`;
-  
-  try {
-    // Создаем временный textarea для копирования
-    const textArea = document.createElement('textarea');
-    textArea.value = message;
-    document.body.appendChild(textArea);
-    textArea.select();
-    
-    // Пытаемся скопировать
-    const successful = document.execCommand('copy');
-    
-    // Удаляем textarea
-    document.body.removeChild(textArea);
-    
-    if (successful) {
-      // Показываем подробное уведомление
-      showDetailedNotification(
-        '✅ Заказ скопирован в буфер обмена!',
-        `Теперь откройте Telegram, перейдите к менеджеру @managercloudm и вставьте скопированный заказ в чат.\n\nНомер заказа: ${orderNumber}\nСумма: ${total.toFixed(2)} zł`,
-        'success'
-      );
-      
-      // Открываем Telegram
-      setTimeout(() => {
-        window.open('https://t.me/managercloudm', '_blank');
-      }, 1500);
-      
-      // Очищаем корзину
-      setTimeout(() => {
-        cart = [];
-        saveCart();
-        updateCartBadge();
-        renderCart();
-      }, 1000);
-      
-      // Сохраняем историю заказа
-      saveOrderHistory(orderNumber, total, message);
-    } else {
-      showNotification('❌ Не удалось скопировать заказ. Попробуйте еще раз.');
-    }
-  } catch (err) {
-    console.error('Ошибка при копировании:', err);
-    showNotification('❌ Ошибка при копировании. Используйте альтернативный способ.');
-    
-    // Альтернативный способ для старых браузеров
-    fallbackCopyOrder(message);
-  }
-}
-
-// Функция для показа подробного уведомления
-function showDetailedNotification(title, message, type = 'info') {
-  // Создаем контейнер для уведомления
-  const notification = document.createElement('div');
-  notification.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: ${type === 'success' ? 'var(--success)' : 'var(--primary)'};
-    color: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    z-index: 10000;
-    font-weight: 600;
-    animation: fadeIn 0.3s;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-  `;
-  
-  notification.innerHTML = `
-    <div style="margin-bottom: 20px;">
-      <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}" style="font-size: 50px; color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;"></i>
-      <h3 style="margin-bottom: 15px; font-size: 22px;">${title}</h3>
-      <p style="font-size: 15px; line-height: 1.5; opacity: 0.9; margin-bottom: 20px;">${message}</p>
-    </div>
-    <div style="display: flex; gap: 10px; justify-content: center;">
-      <button onclick="this.parentElement.parentElement.remove(); openTelegramDirectly()" style="background: white; color: var(--primary); border: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s; flex: 1;">
-        <i class="fab fa-telegram" style="margin-right: 8px;"></i>Открыть Telegram
-      </button>
-      <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 12px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-        Закрыть
-      </button>
-    </div>
-  `;
-  
-  document.body.appendChild(notification);
-  
-  // Добавляем анимацию появления
-  notification.style.opacity = '0';
-  notification.style.transition = 'opacity 0.3s';
-  setTimeout(() => notification.style.opacity = '1', 10);
-  
-  // Автоматически закрываем через 10 секунд
-  setTimeout(() => {
-    if (notification.parentElement) {
-      notification.style.opacity = '0';
-      setTimeout(() => {
-        if (notification.parentElement) {
-          notification.parentElement.removeChild(notification);
-        }
-      }, 300);
-    }
-  }, 10000);
-}
-
-// Функция для открытия Telegram напрямую
-function openTelegramDirectly() {
-  window.open('https://t.me/managercloudm', '_blank');
-}
-
-// Резервная функция копирования для старых браузеров
-function fallbackCopyOrder(message) {
-  // Показываем сообщение в модальном окне для ручного копирования
-  const modalHTML = `
-    <div id="manual-copy-modal" class="modal-overlay active">
-      <div class="modal-container" style="max-width: 500px;">
-        <div class="modal-header">
-          <div class="modal-title">Скопируйте заказ вручную</div>
-          <button class="modal-close" onclick="closeManualCopyModal()">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        
-        <div class="modal-content">
-          <div style="text-align: center; margin-bottom: 20px;">
-            <i class="fas fa-copy" style="font-size: 40px; color: var(--primary); margin-bottom: 15px;"></i>
-            <h3 style="margin-bottom: 10px;">Заказ готов к отправке</h3>
-            <p style="color: var(--gray); margin-bottom: 20px;">Выделите текст ниже и нажмите Ctrl+C (Cmd+C на Mac)</p>
-          </div>
-          
-          <div style="background: var(--dark); border-radius: 10px; padding: 15px; margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
-            <pre style="white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 14px; color: var(--light); margin: 0;">${message}</pre>
-          </div>
-          
-          <div style="background: rgba(42, 171, 238, 0.1); border-radius: 10px; padding: 15px; margin-bottom: 20px;">
-            <p style="margin-bottom: 10px; color: var(--gray);"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>После копирования:</p>
-            <ol style="padding-left: 20px; color: var(--gray);">
-              <li>Откройте Telegram</li>
-              <li>Найдите менеджера @managercloudm</li>
-              <li>Вставьте заказ в чат (Ctrl+V или Cmd+V)</li>
-              <li>Отправьте сообщение</li>
-            </ol>
-          </div>
-        </div>
-        
-        <div class="modal-footer">
-          <button class="btn-primary" onclick="openTelegramDirectly()">
-            <i class="fab fa-telegram"></i>
-            Открыть Telegram
-          </button>
-          <button class="btn-secondary" onclick="closeManualCopyModal()">
-            Закрыть
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
-  
-  // Добавляем модальное окно
-  const modalContainer = document.createElement('div');
-  modalContainer.innerHTML = modalHTML;
-  document.body.appendChild(modalContainer);
-  
-  // Очищаем корзину
-  cart = [];
-  saveCart();
-  updateCartBadge();
-  renderCart();
-}
-
-// Закрыть модальное окно ручного копирования
-function closeManualCopyModal() {
-  const modal = document.getElementById('manual-copy-modal');
-  if (modal) {
-    modal.classList.remove('active');
-    setTimeout(() => {
-      if (modal.parentElement) {
-        modal.parentElement.removeChild(modal);
-      }
-    }, 300);
-  }
-}
-
-// Сохранить историю заказа
-function saveOrderHistory(orderNumber, total, message) {
-  // Получаем текущую историю
-  let orderHistory = JSON.parse(localStorage.getItem('vapeOrderHistory') || '[]');
-  
-  // Добавляем новый заказ
-  const order = {
-    number: orderNumber,
-    date: new Date().toISOString(),
-    total: total,
-    itemsCount: cart.length,
-    items: [...cart], // Копируем текущую корзину
-    message: message
-  };
-  
-  orderHistory.unshift(order); // Добавляем в начало
-  
-  // Сохраняем только последние 50 заказов
-  if (orderHistory.length > 50) {
-    orderHistory = orderHistory.slice(0, 50);
-  }
-  
-  localStorage.setItem('vapeOrderHistory', JSON.stringify(orderHistory));
-}
-
-// Обновить функцию processTelegramPayment в корзине
-// Заменяем старую функцию на новую
-function processTelegramPayment() {
-  copyOrderToClipboard();
-}
-
-// Также обновляем HTML для кнопки в корзине
-// Находим в коде корзины и заменяем:
-// Старый код:
-// <button class="telegram-payment" onclick="processTelegramPayment()">
-//   <i class="fab fa-telegram"></i>
-//   Оплатить через Telegram
-// </button>
-
-// Новый код:
-// <button class="telegram-payment" onclick="copyOrderToClipboard()">
-//   <i class="fas fa-copy"></i>
-//   Скопировать заказ и перейти в Telegram
-// </button>
-</script>
-
   <!-- Страница корзины -->
   <div id="cart-page" class="cart-page">
     <div class="back-btn" onclick="goToHome()">
@@ -1073,13 +887,65 @@ function processTelegramPayment() {
   </div>
 </div>
 
+<!-- Модальное окно выбора способа доставки -->
+<div id="delivery-modal" class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="modal-title">Выберите способ доставки</div>
+      <button class="modal-close" onclick="closeDeliveryModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-content">
+      <div class="delivery-options">
+        <div class="delivery-option" onclick="selectDelivery('INPOST')">
+          <div class="delivery-icon">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="delivery-info">
+            <div class="delivery-name">INPOST</div>
+            <div class="delivery-desc">Доставка в постамат INPOST 20zł. Бесплатная доставка при заказе от 3 жиж или 135zł</div>
+          </div>
+          <div class="delivery-check">
+            <i class="fas fa-check"></i>
+          </div>
+        </div>
+        
+        <div class="delivery-option" onclick="selectDelivery('Личная встреча')">
+          <div class="delivery-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="delivery-info">
+            <div class="delivery-name">Личная встреча</div>
+            <div class="delivery-desc">Встреча в удобном для вас месте. только город (Tychy) Обсудите детали с менеджером</div>
+          </div>
+          <div class="delivery-check">
+            <i class="fas fa-check"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; padding: 15px; background: rgba(138, 43, 226, 0.1); border-radius: 12px;">
+        <p style="color: var(--gray); font-size: 14px; margin-bottom: 10px;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>После выбора способа доставки заказ будет скопирован в буфер обмена и откроется Telegram для связи с менеджером.</p>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="confirmDeliveryAndCopy()">
+        <i class="fas fa-copy"></i>
+        Подтвердить и скопировать заказ
+      </button>
+      <button class="btn-secondary" onclick="closeDeliveryModal()">
+        Отмена
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ========== ДАННЫЕ ТОВАРОВ ==========
-
-// Все товары с картинками
 const allProducts = [
-  // ========== ЖИДКОСТИ ==========
-  // Elfliq
   {
     id: 1,
     name: 'Elfliq 30ml 5%',
@@ -1088,25 +954,12 @@ const allProducts = [
     image: 'https://i.imgur.com/vEq09Ta.png',
     description: 'Elfliq — фірмові рідини Elf Bar з яскравими та впізнаваними смаками',
     flavors: [
-      'Apple Pear',
-      'Blackberry Lemon',
-      'Blackcurrant aniseed',
-      'Blueberry',
-      'Blueberry Raspberry Pomegranate',
-      'Blueberry Rose Mint',
-      'Blueberry Sour Raspberry',
-      'Blue Razz Ice',
-      'Blue Razz Lemonade',
-      'Cherry',
-      'Cherry Cola',
-      'Cherry Lemon Peach',
-      'Cola',
-      'Cool Mint',
-      'Double Apple'
+      'Apple Pear', 'Blackberry Lemon', 'Blackcurrant aniseed', 'Blueberry',
+      'Blueberry Raspberry Pomegranate', 'Blueberry Rose Mint', 'Blueberry Sour Raspberry',
+      'Blue Razz Ice', 'Blue Razz Lemonade', 'Cherry', 'Cherry Cola', 'Cherry Lemon Peach',
+      'Cola', 'Cool Mint', 'Double Apple'
     ]
   },
-  
-  // Chaser Lux 30ml 5%
   {
     id: 2,
     name: 'Chaser Lux 30ml 5%',
@@ -1115,17 +968,10 @@ const allProducts = [
     image: 'https://i.imgur.com/IeTuHXS.png',
     description: 'Премиальная линейка солей для POD-систем',
     flavors: [
-      'Tropic Punch Orange',
-      'Coconut Melon',
-      'Vitamine',
-      'Kiwi Passionfruit Guava',
-      'Blueberry Raspberry',
-      'Sangria',
-      'Turbo mint'
+      'Tropic Punch Orange', 'Coconut Melon', 'Vitamine', 'Kiwi Passionfruit Guava',
+      'Blueberry Raspberry', 'Sangria', 'Turbo mint'
     ]
   },
-  
-  // Chaser Lux 30ml 6%
   {
     id: 3,
     name: 'Chaser Lux 30ml 6%',
@@ -1134,21 +980,11 @@ const allProducts = [
     image: 'https://i.imgur.com/Z0dIMUY.png',
     description: 'Премиальная линейка солей для POD-систем',
     flavors: [
-      'Sour Apple',
-      'Blackberry Lemonade',
-      'Sour Watermelon Candy',
-      'Peach Yogurt',
-      'Blueberry Raspberry',
-      'Grape Mint',
-      'Watermelon Raspberry',
-      'Peach Tea',
-      'Kiwi Passion Fruit Guava',
-      'Cider Berry',
-      'Coconut Melon'
+      'Sour Apple', 'Blackberry Lemonade', 'Sour Watermelon Candy', 'Peach Yogurt',
+      'Blueberry Raspberry', 'Grape Mint', 'Watermelon Raspberry', 'Peach Tea',
+      'Kiwi Passion Fruit Guava', 'Cider Berry', 'Coconut Melon'
     ]
   },
-  
-  // Chaser for pods 30ml 5%
   {
     id: 4,
     name: 'Chaser for pods 30ml 5%',
@@ -1157,19 +993,10 @@ const allProducts = [
     image: 'https://i.imgur.com/n8NuNv9.png',
     description: 'Специально разработан для POD-систем',
     flavors: [
-      'Ягоди',
-      'Блакитна малина',
-      'М\'ята',
-      'Персик',
-      'Полуниця',
-      'Кавун',
-      'Диня',
-      'Грейпфрут',
-      'Жовта малина'
+      'Ягоди', 'Блакитна малина', 'М\'ята', 'Персик', 'Полуниця',
+      'Кавун', 'Диня', 'Грейпфрут', 'Жовта малина'
     ]
   },
-  
-  // CHASER LIMITINI EDITINI 30ML 5%
   {
     id: 5,
     name: 'CHASER LIMITINI EDITINI 30ML 5%',
@@ -1178,16 +1005,10 @@ const allProducts = [
     image: 'https://i.imgur.com/4LDRirY.png',
     description: 'Лимитированная серия с уникальными вкусами',
     flavors: [
-      'ALOE MINT',
-      'JASMINE PEACH',
-      'PINEAPPLE PASSION LIME',
-      'BALERRINA CAPPUCCINO',
-      'GLORBO FRUTTODRILLO',
-      'TUNG TUNG TUNG SAHUR'
+      'ALOE MINT', 'JASMINE PEACH', 'PINEAPPLE PASSION LIME',
+      'BALERRINA CAPPUCCINO', 'GLORBO FRUTTODRILLO', 'TUNG TUNG TUNG SAHUR'
     ]
   },
-  
-  // ========== ОДНОРАЗКИ ==========
   {
     id: 6,
     name: 'ELFBAR RAYA D3 - 25.000 PUFFS',
@@ -1196,26 +1017,12 @@ const allProducts = [
     image: 'https://i.imgur.com/xhr3S0G.png',
     description: 'Одноразовая электронная сигарета на 25,000 затяжек',
     flavors: [
-      'Blueberry Ice',
-      'Strawberry Grape',
-      'Blackberry Cranberry',
-      'Watermelon Ice',
-      'Strawberry Watermelon',
-      'Peach Ice',
-      'Strawberry Ice',
-      'Blue Razz Ice',
-      'Blueberry Raspberry',
-      'Grape Mint',
-      'Watermelon Bubble Gum',
-      'Apple Peach',
-      'Strawberry Banana',
-      'Strawberry Peach',
-      'Lemon Watermelon',
-      'VMT'
+      'Blueberry Ice', 'Strawberry Grape', 'Blackberry Cranberry', 'Watermelon Ice',
+      'Strawberry Watermelon', 'Peach Ice', 'Strawberry Ice', 'Blue Razz Ice',
+      'Blueberry Raspberry', 'Grape Mint', 'Watermelon Bubble Gum', 'Apple Peach',
+      'Strawberry Banana', 'Strawberry Peach', 'Lemon Watermelon', 'VMT'
     ]
   },
-  
-  // ========== ПОДЫ ==========
   {
     id: 7,
     name: 'VAPORESSO XROS 5 MINI',
@@ -1224,16 +1031,10 @@ const allProducts = [
     image: 'https://i.imgur.com/PW1Pqyz.png',
     description: 'Компактная POD-система',
     flavors: [
-      'CARBON BLACK',
-      'SKY BLUE',
-      'PURPLE',
-      'PASTEL CRYSTAL',
-      'TITANIUM SILVER',
-      'FLOWING GREEN'
+      'CARBON BLACK', 'SKY BLUE', 'PURPLE', 'PASTEL CRYSTAL',
+      'TITANIUM SILVER', 'FLOWING GREEN'
     ]
   },
-  
-  // ========== КАРТРИДЖИ ==========
   {
     id: 8,
     name: 'Катридж XROS 5 MINI',
@@ -1241,34 +1042,26 @@ const allProducts = [
     price: 25,
     image: 'https://i.imgur.com/gvDaEyg.png',
     description: 'Сменные картриджи',
-    flavors: [
-      '3ml 0.4Ω',
-      '2ml 0.6Ω'
-    ]
+    flavors: ['3ml 0.4Ω', '2ml 0.6Ω']
   }
 ];
 
-// Корзина
+// Корзина и состояние
 let cart = [];
 let currentProduct = null;
 let selectedFlavor = null;
+let selectedDelivery = null;
 
 // ========== ОСНОВНЫЕ ФУНКЦИИ ==========
-
-// Загрузка страницы
 document.addEventListener('DOMContentLoaded', function() {
-  // Загружаем корзину из localStorage
   const savedCart = localStorage.getItem('vapeCart');
   if (savedCart) {
     cart = JSON.parse(savedCart);
     updateCartBadge();
   }
-  
-  // Отображаем товары
   renderProducts(allProducts);
 });
 
-// Отображение товаров
 function renderProducts(products) {
   const container = document.getElementById('products-container');
   container.innerHTML = '';
@@ -1288,7 +1081,6 @@ function renderProducts(products) {
     const productCard = document.createElement('div');
     productCard.className = 'product-card';
     
-    // Определяем текст кнопки в зависимости от категории и наличия вариантов
     let buttonText = 'В корзину';
     let buttonAction = `addToCartSimple(${product.id})`;
     
@@ -1319,7 +1111,6 @@ function renderProducts(products) {
   });
 }
 
-// Поиск товаров
 function searchProducts() {
   const searchInput = document.getElementById('searchInput');
   const query = searchInput.value.toLowerCase();
@@ -1338,7 +1129,6 @@ function searchProducts() {
   renderProducts(filtered);
 }
 
-// Фильтрация по категориям
 function filterProducts(category) {
   if (!category) {
     renderProducts(allProducts);
@@ -1349,7 +1139,6 @@ function filterProducts(category) {
   renderProducts(filtered);
 }
 
-// Обновление бейджа корзины
 function updateCartBadge() {
   const count = cart.length;
   document.getElementById('cart-badge').textContent = count;
@@ -1357,15 +1146,12 @@ function updateCartBadge() {
 }
 
 // ========== МОДАЛЬНОЕ ОКНО ВКУСОВ ==========
-
-// Открыть модальное окно выбора варианта
 function openFlavorModal(productId) {
   currentProduct = allProducts.find(p => p.id === productId);
   selectedFlavor = null;
   
   if (!currentProduct) return;
   
-  // Устанавливаем заголовок в зависимости от категории
   let modalTitle = 'Выберите вкус';
   if (currentProduct.category === 'Поды') {
     modalTitle = 'Выберите цвет';
@@ -1375,7 +1161,6 @@ function openFlavorModal(productId) {
   
   document.getElementById('modal-title').textContent = `${modalTitle} (${currentProduct.name})`;
   
-  // Заполняем список вариантов
   const flavorList = document.getElementById('flavor-list');
   flavorList.innerHTML = '';
   
@@ -1394,36 +1179,29 @@ function openFlavorModal(productId) {
     flavorList.appendChild(flavorItem);
   });
   
-  // Показываем модальное окно
   document.getElementById('flavor-modal').classList.add('active');
 }
 
-// Закрыть модальное окно
 function closeFlavorModal() {
   document.getElementById('flavor-modal').classList.remove('active');
   currentProduct = null;
   selectedFlavor = null;
 }
 
-// Выбрать вкус
 function selectFlavor(flavor) {
   selectedFlavor = flavor;
   
-  // Снимаем выделение со всех
   document.querySelectorAll('.flavor-item').forEach(item => {
     item.classList.remove('selected');
   });
   
-  // Выделяем выбранный
-  const flavorItems = document.querySelectorAll('.flavor-item');
-  flavorItems.forEach(item => {
+  document.querySelectorAll('.flavor-item').forEach(item => {
     if (item.querySelector('.flavor-name').textContent === flavor) {
       item.classList.add('selected');
     }
   });
 }
 
-// Добавить в корзину с выбранным вкусом
 function addToCartWithFlavor() {
   if (!currentProduct) return;
   
@@ -1433,7 +1211,7 @@ function addToCartWithFlavor() {
   }
   
   const cartItem = {
-    id: Date.now(), // Уникальный ID
+    id: Date.now(),
     productId: currentProduct.id,
     name: currentProduct.name,
     flavor: selectedFlavor,
@@ -1447,11 +1225,9 @@ function addToCartWithFlavor() {
   updateCartBadge();
   closeFlavorModal();
   
-  // Показываем уведомление
   showNotification(`Товар добавлен в корзину: ${currentProduct.name}${selectedFlavor ? ` (${selectedFlavor})` : ''}`);
 }
 
-// Добавить в корзину без выбора вкуса (для товаров без вкусов)
 function addToCartSimple(productId) {
   const product = allProducts.find(p => p.id === productId);
   if (!product) return;
@@ -1473,19 +1249,52 @@ function addToCartSimple(productId) {
   showNotification(`Товар добавлен в корзину: ${product.name}`);
 }
 
-// Сохранить корзину
 function saveCart() {
   localStorage.setItem('vapeCart', JSON.stringify(cart));
 }
 
-// ========== КОРЗИНА ==========
+// ========== МОДАЛЬНОЕ ОКНО ДОСТАВКИ ==========
+function openDeliveryModal() {
+  selectedDelivery = null;
+  document.querySelectorAll('.delivery-option').forEach(item => {
+    item.classList.remove('selected');
+  });
+  document.getElementById('delivery-modal').classList.add('active');
+}
 
-// Открыть страницу корзины
+function closeDeliveryModal() {
+  document.getElementById('delivery-modal').classList.remove('active');
+}
+
+function selectDelivery(method) {
+  selectedDelivery = method;
+  
+  document.querySelectorAll('.delivery-option').forEach(item => {
+    item.classList.remove('selected');
+  });
+  
+  document.querySelectorAll('.delivery-option').forEach(item => {
+    if (item.querySelector('.delivery-name').textContent === method) {
+      item.classList.add('selected');
+    }
+  });
+}
+
+function confirmDeliveryAndCopy() {
+  if (!selectedDelivery) {
+    alert('Пожалуйста, выберите способ доставки');
+    return;
+  }
+  
+  closeDeliveryModal();
+  copyOrderToClipboard();
+}
+
+// ========== КОРЗИНА ==========
 function openCartPage() {
   document.getElementById('shop-page').style.display = 'none';
   document.getElementById('cart-page').style.display = 'block';
   
-  // Обновляем навигацию
   document.querySelectorAll('.nav-item').forEach(item => {
     item.classList.remove('active');
   });
@@ -1494,12 +1303,10 @@ function openCartPage() {
   renderCart();
 }
 
-// Вернуться на главную
 function goToHome() {
   document.getElementById('shop-page').style.display = 'block';
   document.getElementById('cart-page').style.display = 'none';
   
-  // Обновляем навигацию
   document.querySelectorAll('.nav-item').forEach(item => {
     item.classList.remove('active');
   });
@@ -1508,7 +1315,6 @@ function goToHome() {
   renderProducts(allProducts);
 }
 
-// Отобразить корзину
 function renderCart() {
   const container = document.getElementById('cart-items-container');
   const summaryContainer = document.getElementById('cart-summary-container');
@@ -1550,7 +1356,6 @@ function renderCart() {
     container.appendChild(cartItem);
   });
   
-  // Рассчитываем итоговую сумму
   const total = cart.reduce((sum, item) => sum + item.price, 0);
   
   summaryContainer.innerHTML = `
@@ -1559,20 +1364,19 @@ function renderCart() {
         <span>Итого:</span>
         <span class="cart-total-amount">${total.toFixed(2)} zł</span>
       </div>
-      <button class="telegram-payment" onclick="copyOrderToClipboard()">
-  <i class="fas fa-copy"></i>
-  Скопировать заказ и перейти в Telegram
-</button>
+      <button class="telegram-payment" onclick="openDeliveryModal()">
+        <i class="fas fa-copy"></i>
+        Оформить заказ в Telegram
+      </button>
       <div class="payment-info">
-        <p>Для оформления заказа напишите менеджеру в Telegram:</p>
+        <p>Для оформления заказа выберите способ доставки и свяжитесь с менеджером в Telegram:</p>
         <div class="telegram-username">@managercloudm</div>
-        <p>Сообщите менеджеру список товаров из корзины и общую сумму</p>
+        <p>Заказ будет автоматически скопирован в буфер обмена</p>
       </div>
     </div>
   `;
 }
 
-// Удалить товар из корзины
 function removeFromCart(index) {
   if (index >= 0 && index < cart.length) {
     const item = cart[index];
@@ -1584,39 +1388,245 @@ function removeFromCart(index) {
   }
 }
 
-// Обработка оплаты через Telegram
-function processTelegramPayment() {
+// ========== ОТПРАВКА ЗАКАЗА ==========
+function copyOrderToClipboard() {
   if (cart.length === 0) {
     showNotification('Корзина пуста');
     return;
   }
   
+  if (!selectedDelivery) {
+    openDeliveryModal();
+    return;
+  }
+  
   const total = cart.reduce((sum, item) => sum + item.price, 0);
-  const itemsList = cart.map(item => 
-    `- ${item.name}${item.flavor ? ` (${item.flavor})` : ''}: ${item.price.toFixed(2)} zł`
-  ).join('\n');
+  const orderNumber = 'ORD-' + Date.now().toString().slice(-6);
+  const timestamp = new Date().toLocaleString('ru-RU');
   
-  const message = `Заказ из CloudHub\n\nТовары:\n${itemsList}\n\nИтого: ${total.toFixed(2)} zł\n\nДля оформления заказа свяжитесь с менеджером: @managercloudm`;
+  let message = `🛒 *НОВЫЙ ЗАКАЗ НА CLOUDHUB* 🛒\n`;
+  message += `📦 *Номер заказа:* ${orderNumber}\n`;
+  message += `⏰ *Дата и время:* ${timestamp}\n`;
+  message += `🚚 *Способ доставки:* ${selectedDelivery}\n`;
+  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+  message += `*ТОВАРЫ В ЗАКАЗЕ:*\n`;
   
-  // Копируем в буфер обмена
-  const textArea = document.createElement('textarea');
-  textArea.value = message;
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textArea);
+  cart.forEach((item, index) => {
+    message += `${index + 1}. *${item.name}*\n`;
+    if (item.flavor) {
+      message += `   🍃 Вариант: ${item.flavor}\n`;
+    }
+    message += `   💰 Цена: ${item.price.toFixed(2)} zł\n`;
+    message += `   📂 Категория: ${item.category}\n`;
+    message += `\n`;
+  });
   
-  showNotification('Заказ скопирован. Отправьте менеджеру @managercloudm в Telegram');
+  message += `━━━━━━━━━━━━━━━━━━━━\n`;
+  message += `💰 *ИТОГО К ОПЛАТЕ:* ${total.toFixed(2)} zł\n\n`;
   
-  // Открываем Telegram
+  if (selectedDelivery === 'INPOST' && total >= 200) {
+    message += `🚚 *Доставка:* БЕСПЛАТНО (заказ от 200 zł)\n`;
+  } else if (selectedDelivery === 'INPOST') {
+    message += `🚚 *Доставка:* 15 zł (бесплатно от 200 zł)\n`;
+  } else {
+    message += `🚚 *Доставка:* Личная встреча (обсудите детали)\n`;
+  }
+  
+  message += `\n👤 *Контакт менеджера:* @managercloudm\n`;
+  message += `📱 *Связь через:* Telegram`;
+  
+  try {
+    const textArea = document.createElement('textarea');
+    textArea.value = message;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    const successful = document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    if (successful) {
+      showDetailedNotification(
+        '✅ Заказ скопирован в буфер обмена!',
+        `Теперь откройте Telegram, перейдите к менеджеру @managercloudm и вставьте скопированный заказ в чат.\n\nНомер заказа: ${orderNumber}\nСумма: ${total.toFixed(2)} zł\nДоставка: ${selectedDelivery}`,
+        'success'
+      );
+      
+      setTimeout(() => {
+        window.open('https://t.me/managercloudm', '_blank');
+      }, 1500);
+      
+      setTimeout(() => {
+        cart = [];
+        saveCart();
+        updateCartBadge();
+        renderCart();
+      }, 1000);
+      
+      saveOrderHistory(orderNumber, total, message);
+    } else {
+      showNotification('❌ Не удалось скопировать заказ. Попробуйте еще раз.');
+    }
+  } catch (err) {
+    console.error('Ошибка при копировании:', err);
+    showNotification('❌ Ошибка при копировании. Используйте альтернативный способ.');
+    fallbackCopyOrder(message);
+  }
+}
+
+function showDetailedNotification(title, message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: ${type === 'success' ? 'var(--success)' : 'var(--primary)'};
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    font-weight: 600;
+    animation: fadeIn 0.3s;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+  `;
+  
+  notification.innerHTML = `
+    <div style="margin-bottom: 20px;">
+      <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}" style="font-size: 50px; color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;"></i>
+      <h3 style="margin-bottom: 15px; font-size: 22px;">${title}</h3>
+      <p style="font-size: 15px; line-height: 1.5; opacity: 0.9; margin-bottom: 20px;">${message}</p>
+    </div>
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <button onclick="this.parentElement.parentElement.remove(); openTelegramDirectly()" style="background: white; color: var(--primary); border: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s; flex: 1;">
+        <i class="fab fa-telegram" style="margin-right: 8px;"></i>Открыть Telegram
+      </button>
+      <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 12px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+        Закрыть
+      </button>
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  notification.style.opacity = '0';
+  notification.style.transition = 'opacity 0.3s';
+  setTimeout(() => notification.style.opacity = '1', 10);
+  
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.parentElement.removeChild(notification);
+        }
+      }, 300);
+    }
+  }, 10000);
+}
+
+function openTelegramDirectly() {
   window.open('https://t.me/managercloudm', '_blank');
 }
 
-// ========== УТИЛИТЫ ==========
+function fallbackCopyOrder(message) {
+  const modalHTML = `
+    <div id="manual-copy-modal" class="modal-overlay active">
+      <div class="modal-container" style="max-width: 500px;">
+        <div class="modal-header">
+          <div class="modal-title">Скопируйте заказ вручную</div>
+          <button class="modal-close" onclick="closeManualCopyModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="modal-content">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <i class="fas fa-copy" style="font-size: 40px; color: var(--primary); margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom: 10px;">Заказ готов к отправке</h3>
+            <p style="color: var(--gray); margin-bottom: 20px;">Выделите текст ниже и нажмите Ctrl+C (Cmd+C на Mac)</p>
+          </div>
+          
+          <div style="background: var(--dark); border-radius: 10px; padding: 15px; margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
+            <pre style="white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 14px; color: var(--light); margin: 0;">${message}</pre>
+          </div>
+          
+          <div style="background: rgba(42, 171, 238, 0.1); border-radius: 10px; padding: 15px; margin-bottom: 20px;">
+            <p style="margin-bottom: 10px; color: var(--gray);"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>После копирования:</p>
+            <ol style="padding-left: 20px; color: var(--gray);">
+              <li>Откройте Telegram</li>
+              <li>Найдите менеджера @managercloudm</li>
+              <li>Вставьте заказ в чат (Ctrl+V или Cmd+V)</li>
+              <li>Отправьте сообщение</li>
+            </ol>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button class="btn-primary" onclick="openTelegramDirectly()">
+            <i class="fab fa-telegram"></i>
+            Открыть Telegram
+          </button>
+          <button class="btn-secondary" onclick="closeManualCopyModal()">
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  const modalContainer = document.createElement('div');
+  modalContainer.innerHTML = modalHTML;
+  document.body.appendChild(modalContainer);
+  
+  cart = [];
+  saveCart();
+  updateCartBadge();
+  renderCart();
+}
 
-// Показать уведомление
+function closeManualCopyModal() {
+  const modal = document.getElementById('manual-copy-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      if (modal.parentElement) {
+        modal.parentElement.removeChild(modal);
+      }
+    }, 300);
+  }
+}
+
+function saveOrderHistory(orderNumber, total, message) {
+  let orderHistory = JSON.parse(localStorage.getItem('vapeOrderHistory') || '[]');
+  
+  const order = {
+    number: orderNumber,
+    date: new Date().toISOString(),
+    total: total,
+    delivery: selectedDelivery,
+    itemsCount: cart.length,
+    items: [...cart],
+    message: message
+  };
+  
+  orderHistory.unshift(order);
+  
+  if (orderHistory.length > 50) {
+    orderHistory = orderHistory.slice(0, 50);
+  }
+  
+  localStorage.setItem('vapeOrderHistory', JSON.stringify(orderHistory));
+}
+
+// ========== УТИЛИТЫ ==========
 function showNotification(message) {
-  // Создаем элемент уведомления
+  const existing = document.querySelector('.notification');
+  if (existing) existing.remove();
+  
   const notification = document.createElement('div');
   notification.style.cssText = `
     position: fixed;
@@ -1636,29 +1646,36 @@ function showNotification(message) {
   `;
   notification.textContent = message;
   
-
-
   document.body.appendChild(notification);
   
-  // Через 3 секунды удаляем уведомление
   setTimeout(() => {
     notification.style.opacity = '0';
     notification.style.transition = 'opacity 0.5s';
-    setTimeout(() => document.body.removeChild(notification), 500);
+    setTimeout(() => {
+      if (notification.parentElement) {
+        notification.parentElement.removeChild(notification);
+      }
+    }, 500);
   }, 3000);
 }
 
-// Закрытие модального окна при клике на фон
+// Закрытие модальных окон
 document.getElementById('flavor-modal').addEventListener('click', function(e) {
   if (e.target.id === 'flavor-modal') {
     closeFlavorModal();
   }
 });
 
-// Закрытие модального окна по клавише Escape
+document.getElementById('delivery-modal').addEventListener('click', function(e) {
+  if (e.target.id === 'delivery-modal') {
+    closeDeliveryModal();
+  }
+});
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeFlavorModal();
+    closeDeliveryModal();
   }
 });
 </script>
