@@ -215,10 +215,19 @@ header {
   padding: 15px;
 }
 
+@media (min-width: 441px ) {
+
 .product-name {
   font-weight: 600;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 10px;
+}
+}
+
+.product-name {
+  font-weight: 600;
+  margin-bottom: 3px;
+  font-size: 10px;
 }
 
 .product-category {
@@ -234,6 +243,8 @@ header {
   font-size: 18px;
 }
 
+@media (min-width: 441px ) {
+
 .btn-select {
   background: linear-gradient(to right, var(--primary), var(--primary-dark));
   color: white;
@@ -246,6 +257,21 @@ header {
   transition: all 0.3s;
   width: 100%;
 }
+}
+
+.btn-select {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
 
 .btn-select:hover {
   background: linear-gradient(to right, var(--primary-dark), var(--primary));
