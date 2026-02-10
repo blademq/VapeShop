@@ -954,10 +954,16 @@ const allProducts = [
     image: 'https://i.imgur.com/vEq09Ta.png',
     description: 'Elfliq — фірмові рідини Elf Bar з яскравими та впізнаваними смаками',
     flavors: [
-      'Apple Pear', 'Blackberry Lemon', 'Blackcurrant aniseed', 'Blueberry',
-      'Blueberry Raspberry Pomegranate', 'Blueberry Rose Mint', 'Blueberry Sour Raspberry',
-      'Blue Razz Ice', 'Blue Razz Lemonade', 'Cherry', 'Cherry Cola', 'Cherry Lemon Peach',
-      'Cola', 'Cool Mint', 'Double Apple'
+        'Apple Pear', 'Blackberry Lemon', 'Blackcurrant aniseed', 'Blueberry',
+        'Blueberry Raspberry Pomegranate', 'Blueberry Rose Mint', 'Blueberry Sour Raspberry',
+        'Blue Razz Ice', 'Blue Razz Lemonade', 'Cherry', 'Cherry Cola', 'Cherry Lemon Peach',
+        'Cola', 'Cool Mint', 'Double Apple', 'Watermelon Cherry', 'Strawberry Cherry Lemon', 'Grape Cherry', 'Green Grape Rose', 'Jasmine',                                    	'Raspberry', 'Pineapple Ice', 'Sour Watermelon  Gummy', 'Strawberry Banana', 'Mango Peach', 'Pineapple Colada', 'Pink Lemonade Soda',
+	'Apple Peach', 'Blackberry Lemon', 'Blackcurrant Aniseed', 'Blue Razz Lemonade',
+	'Blueberry', 'Pink Lemonade Soda', 'Cherry', 'Cola', 'Elf Jack',
+	'Grape', 'Cherry Cola', 'PB Cloud', 'Pina Colada', 'Pink Grapefruit',
+	'Pink Lemonade', 'Sour Apple', 'Strawberry Ice', 'Strawberry Kiwi',
+	'Strawberry Raspberry Cherry Ice', 'Strawberry Snoow', 'Rhubarb Snoow',
+	'Peach Ice', 'Blueberry Sour Raspberry', 'Spearmint'
     ]
   },
   {
@@ -1425,11 +1431,11 @@ function copyOrderToClipboard() {
   message += `💰 *ИТОГО К ОПЛАТЕ:* ${total.toFixed(2)} zł\n\n`;
   
   if (selectedDelivery === 'INPOST' && total >= 200) {
-    message += `🚚 *Доставка:* БЕСПЛАТНО (заказ от 200 zł)\n`;
+    message += `🚚 *Доставка:* БЕСПЛАТНО (заказ от 135 zł или 3 жиж)\n`;
   } else if (selectedDelivery === 'INPOST') {
-    message += `🚚 *Доставка:* 15 zł (бесплатно от 200 zł)\n`;
+    message += `🚚 *Доставка:* 20 zł (бесплатно от 135 zł или 3 жиж)\n`;
   } else {
-    message += `🚚 *Доставка:* Личная встреча (обсудите детали)\n`;
+    message += `🚚 *Доставка:* Личная встреча (обсудите детали - город: Tychy)\n`;
   }
   
   message += `\n👤 *Контакт менеджера:* @managercloudm\n`;
