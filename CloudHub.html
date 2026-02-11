@@ -1647,7 +1647,7 @@ html {
     </div>
     <div class="icon-btn" onclick="openCartPage()">
       <i class="fas fa-shopping-cart"></i>
-      <div class="cart-badge" id="header-cart-badge">1</div>
+      <div class="cart-badge" id="header-cart-badge">0</div>
     </div>
   </div>
 </header>
@@ -1663,9 +1663,9 @@ html {
     </div>
     
     <div class="categories">
-      <div class="category-card" onclick="filterProducts('Жидкості')">
+      <div class="category-card" onclick="filterProducts('Рідини')">
         <img src="https://i.imgur.com/QGv2Uvv.png" alt="Жидкості" class="category-image">
-        <div class="category-name">Жидкості</div>
+        <div class="category-name">Рідини</div>
       </div>
       
       <div class="category-card" onclick="filterProducts('Одноразки')">
@@ -1673,9 +1673,9 @@ html {
         <div class="category-name">Одноразки</div>
       </div>
       
-      <div class="category-card" onclick="filterProducts('Поды')">
+      <div class="category-card" onclick="filterProducts('POD-система')">
         <img src="https://i.imgur.com/PW1Pqyz.png" alt="Поды" class="category-image">
-        <div class="category-name">Поды</div>
+        <div class="category-name">POD-системы</div>
       </div>
       
       <div class="category-card" onclick="filterProducts('Картриджі')">
@@ -1690,7 +1690,7 @@ html {
       </div>
       <div class="product-info">
         <div class="product-name">Elfliq 30ml 5%</div>
-        <div class="product-category">Жидкості</div>
+        <div class="product-category">Рідини</div>
         <div class="product-price">45.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('1')">Вибрати смак</button>
       </div>
@@ -1700,7 +1700,7 @@ html {
       </div>
       <div class="product-info">
         <div class="product-name">Chaser Lux 30ml 5%</div>
-        <div class="product-category">Жидкості</div>
+        <div class="product-category">Рідини</div>
         <div class="product-price">50.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('2')">Вибрати смак</button>
       </div>
@@ -1710,7 +1710,7 @@ html {
       </div>
       <div class="product-info">
         <div class="product-name">Chaser Lux 30ml 6%</div>
-        <div class="product-category">Жидкості</div>
+        <div class="product-category">Рідини</div>
         <div class="product-price">50.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('3')">Вибрати смак</button>
       </div>
@@ -1720,7 +1720,7 @@ html {
       </div>
       <div class="product-info">
         <div class="product-name">Chaser for pods 30ml 5%</div>
-        <div class="product-category">Жидкості</div>
+        <div class="product-category">Рідини</div>
         <div class="product-price">50.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('4')">Вибрати смак</button>
       </div>
@@ -1730,7 +1730,7 @@ html {
       </div>
       <div class="product-info">
         <div class="product-name">CHASER LIMITINI EDITINI 30ML 5%</div>
-        <div class="product-category">Жидкості</div>
+        <div class="product-category">Рідини</div>
         <div class="product-price">50.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('5')">Вибрати смак</button>
       </div>
@@ -1750,9 +1750,9 @@ html {
       </div>
       <div class="product-info">
         <div class="product-name">VAPORESSO XROS 5 MINI</div>
-        <div class="product-category">Поды</div>
+        <div class="product-category">POD-системы</div>
         <div class="product-price">120.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('7')">Вибрати колір</button>
+        <button class="btn-select" onclick="openFlavorModal('7')">Вибрати колiр</button>
       </div>
     </div><div class="product-card">
       <div class="product-image">
@@ -1768,7 +1768,7 @@ html {
   </div>
   
   <!-- Страница корзины -->
-  <div id="cart-page" class="cart-page">
+  <div id="cart-page" class="cart-page" style="display: none;">
     <div class="back-btn" onclick="goToHome()">
       <i class="fas fa-arrow-left"></i>
       <span>Назад в каталог</span>
@@ -1784,9 +1784,9 @@ html {
   </div>
 
   <!-- Админ-панель (только после авторизации) -->
-  <div id="admin-page" class="admin-page">
+  <div id="admin-page" class="admin-page" style="display: none;">
     <!-- Форма авторизации -->
-    <div id="login-form" class="login-container" style="display: none;">
+    <div id="login-form" class="login-container" style="display: block;">
       <h2><i class="fas fa-lock"></i> Вхід в адмін-панель</h2>
       <div class="login-input-group">
         <label>Логін</label>
@@ -1805,13 +1805,13 @@ html {
     </div>
 
     <!-- Панель управления (после входа) -->
-    <div id="admin-panel" style="display: block;">
+    <div id="admin-panel" style="display: none;">
       <div class="admin-header">
         <div>
           <h2><i class="fas fa-box"></i> Управління товарами</h2>
           <div class="admin-user-info">
             <i class="fas fa-user"></i>
-            <span id="current-user">admin_maks</span>
+            <span id="current-user">admin</span>
           </div>
         </div>
         <div>
@@ -1829,7 +1829,7 @@ html {
         <div>
           <div class="admin-product-title">Elfliq 30ml 5%</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Жидкості • 45.00 zł
+            Рідини • 45.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2094,7 +2094,7 @@ html {
         <div>
           <div class="admin-product-title">Chaser Lux 30ml 5%</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Жидкості • 50.00 zł
+            Рідини • 50.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2170,7 +2170,7 @@ html {
         <div>
           <div class="admin-product-title">Chaser Lux 30ml 6%</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Жидкості • 50.00 zł
+            Рідини • 50.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2253,7 +2253,7 @@ html {
         <div>
           <div class="admin-product-title">Chaser for pods 30ml 5%</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Жидкості • 50.00 zł
+            Рідини • 50.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2343,7 +2343,7 @@ html {
         <div>
           <div class="admin-product-title">CHASER LIMITINI EDITINI 30ML 5%</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Жидкості • 50.00 zł
+            Рідини • 50.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2495,7 +2495,7 @@ html {
         <div>
           <div class="admin-product-title">VAPORESSO XROS 5 MINI</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Поды • 120.00 zł
+            POD-система • 120.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2580,7 +2580,7 @@ html {
   <div class="nav-item" onclick="openCartPage()">
     <i class="fas fa-shopping-cart"></i>
     <span>Кошик</span>
-    <div class="cart-badge-nav" id="cart-badge">1</div>
+    <div class="cart-badge-nav" id="cart-badge">0</div>
   </div>
   
   <div class="nav-item" onclick="openAdminPage()">
@@ -2592,7 +2592,7 @@ html {
 <div id="flavor-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">Виберіть смак</div>
+      <div class="modal-title" id="modal-title">Виберіть колір</div>
       <button class="modal-close" onclick="closeFlavorModal()">
         <i class="fas fa-times"></i>
       </button>
@@ -2697,9 +2697,9 @@ html {
         <div class="form-group">
           <label>Категорія</label>
           <select id="edit-product-category" required="">
-            <option value="Жидкості">Жидкості</option>
+            <option value="Жидкості">Рідини</option>
             <option value="Одноразки">Одноразки</option>
-            <option value="Поды">Поды</option>
+            <option value="POD-системы">POD-системы</option>
             <option value="Картриджі">Картриджі</option>
           </select>
         </div>
@@ -2857,7 +2857,7 @@ function addInitialProducts() {
     {
       id: "1",
       name: 'Elfliq 30ml 5%',
-      category: 'Жидкості',
+      category: 'Рідини',
       price: 45,
       image: 'https://i.imgur.com/vEq09Ta.png',
       description: 'Elfliq — фірмові рідини Elf Bar з яскравими та впізнаваними смаками',
@@ -2871,7 +2871,7 @@ function addInitialProducts() {
     {
       id: "2",
       name: 'Chaser Lux 30ml 5%',
-      category: 'Жидкості',
+      category: 'Рідини',
       price: 50,
       image: 'https://i.imgur.com/IeTuHXS.png',
       description: 'Преміальна лінійка солей для POD-систем',
@@ -2883,7 +2883,7 @@ function addInitialProducts() {
     {
       id: "3",
       name: 'Chaser Lux 30ml 6%',
-      category: 'Жидкості',
+      category: 'Рідини',
       price: 50,
       image: 'https://i.imgur.com/Z0dIMUY.png',
       description: 'Преміальна лінійка солей для POD-систем',
@@ -2895,7 +2895,7 @@ function addInitialProducts() {
     {
       id: "4",
       name: 'Chaser for pods 30ml 5%',
-      category: 'Жидкості',
+      category: 'Рідини',
       price: 50,
       image: 'https://i.imgur.com/n8NuNv9.png',
       description: 'Спеціально розроблений для POD-систем',
@@ -2907,7 +2907,7 @@ function addInitialProducts() {
     {
       id: "5",
       name: 'CHASER LIMITINI EDITINI 30ML 5%',
-      category: 'Жидкості',
+      category: 'Рідини',
       price: 50,
       image: 'https://i.imgur.com/4LDRirY.png',
       description: 'Лімітована серія з унікальними смаками',
@@ -2931,7 +2931,7 @@ function addInitialProducts() {
     {
       id: "7",
       name: 'VAPORESSO XROS 5 MINI',
-      category: 'Поды',
+      category: 'POD-системы',
       price: 120,
       image: 'https://i.imgur.com/PW1Pqyz.png',
       description: 'Компактна POD-система',
@@ -2990,7 +2990,7 @@ function renderProducts(products) {
     let buttonAction = `addToCartSimple('${product.id}')`;
     
     if (product.flavors && product.flavors.length > 0) {
-      if (product.category === 'Поды') {
+      if (product.category === 'POD-система') {
         buttonText = 'Вибрати колір';
       } else if (product.category === 'Картриджі') {
         buttonText = 'Вибрати Ω';
@@ -3121,8 +3121,8 @@ function openFlavorModal(productId) {
   
   if (!currentProduct) return;
   
-  let modalTitle = 'Виберіть смак';
-  if (currentProduct.category === 'Поды') {
+  let modalTitle = 'Вибрати смак';
+  if (currentProduct.category === 'POD-системы') {
     modalTitle = 'Виберіть колір';
   } else if (currentProduct.category === 'Картриджі') {
     modalTitle = 'Виберіть опір';
@@ -3903,5 +3903,7 @@ function createDefaultAdmin() {
 </script>
 
 
-</body></html>
 
+
+
+</body></html>
