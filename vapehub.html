@@ -1734,41 +1734,11 @@ html {
         <div class="product-price">50.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('5')">Вибрати смак</button>
       </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/xhr3S0G.png" alt="ELFBAR RAYA D3 - 25.000 PUFFS" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">ELFBAR RAYA D3 - 25.000 PUFFS</div>
-        <div class="product-category">Одноразки</div>
-        <div class="product-price">80.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('6')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/PW1Pqyz.png" alt="VAPORESSO XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">VAPORESSO XROS 5 MINI</div>
-        <div class="product-category">Поды</div>
-        <div class="product-price">120.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('7')">Вибрати колір</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/gvDaEyg.png" alt="Катридж XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">Катридж XROS 5 MINI</div>
-        <div class="product-category">Картриджі</div>
-        <div class="product-price">25.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('8')">Вибрати Ω</button>
-      </div>
     </div></div>
   </div>
   
   <!-- Страница корзины -->
-  <div id="cart-page" class="cart-page">
+  <div id="cart-page" class="cart-page" style="display: none;">
     <div class="back-btn" onclick="goToHome()">
       <i class="fas fa-arrow-left"></i>
       <span>Назад в каталог</span>
@@ -1784,7 +1754,7 @@ html {
   </div>
 
   <!-- Админ-панель (только после авторизации) -->
-  <div id="admin-page" class="admin-page">
+  <div id="admin-page" class="admin-page" style="display: none;">
     <!-- Форма авторизации -->
     <div id="login-form" class="login-container" style="display: none;">
       <h2><i class="fas fa-lock"></i> Вхід в адмін-панель</h2>
@@ -1811,7 +1781,7 @@ html {
           <h2><i class="fas fa-box"></i> Управління товарами</h2>
           <div class="admin-user-info">
             <i class="fas fa-user"></i>
-            <span id="current-user">admin_maks</span>
+            <span id="current-user">admin</span>
           </div>
         </div>
         <div>
@@ -3903,6 +3873,7 @@ function createDefaultAdmin() {
 </script>
 
 
+
+
+
 </body></html>
-
-
