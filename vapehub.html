@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CloudHub | Магазин вейп-продукции</title>
+<title>CloudHub | Магазин вейп-продукції</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ==========================================
@@ -162,35 +162,30 @@ header {
   margin-right: auto;
 }
 
-/* Для очень маленьких экранов */
 @media (max-width: 360px) {
   .categories {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Для средних телефонов */
 @media (min-width: 361px) and (max-width: 540px) {
   .categories {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Для больших телефонов и маленьких планшетов */
 @media (min-width: 541px) and (max-width: 768px) {
   .categories {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Для планшетов */
 @media (min-width: 769px) and (max-width: 1024px) {
   .categories {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Для ноутбуков и десктопов */
 @media (min-width: 1025px) {
   .categories {
     grid-template-columns: repeat(4, 1fr);
@@ -242,42 +237,36 @@ header {
   margin-right: auto;
 }
 
-/* Мобильные (до 480px) - 2 колонки */
 @media (max-width: 480px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Средние телефоны (481px - 640px) - 2 колонки */
 @media (min-width: 481px) and (max-width: 640px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Большие телефоны (641px - 768px) - 3 колонки */
 @media (min-width: 641px) and (max-width: 768px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Планшеты (769px - 1024px) - 3 колонки */
 @media (min-width: 769px) and (max-width: 1024px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Ноутбуки (1025px - 1440px) - 4 колонки */
 @media (min-width: 1025px) and (max-width: 1440px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Большие экраны (1441px+) - 5 колонок */
 @media (min-width: 1441px) {
   .products-grid {
     grid-template-columns: repeat(5, 1fr);
@@ -392,7 +381,7 @@ header {
   background: var(--dark-light);
   border-radius: clamp(15px, 2.5vw, 20px);
   width: 100%;
-  max-width: min(500px, 95vw);
+  max-width: min(600px, 95vw);
   max-height: 85vh;
   display: flex;
   flex-direction: column;
@@ -525,22 +514,40 @@ header {
 }
 
 /* ==========================================
-   СПИСОК ВКУСОВ - АДАПТИВНЫЙ
+   СПИСОК ВКУСОВ - АДАПТИВНЫЙ (МНОЖЕСТВЕННЫЙ ВЫБОР)
    ========================================== */
+
+.multi-select-info {
+  background: rgba(138, 43, 226, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.multi-select-info i {
+  color: var(--primary);
+  margin-right: 8px;
+}
+
+.selected-count {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 18px;
+}
 
 .flavor-list {
   display: grid;
   gap: clamp(8px, 1.5vw, 10px);
 }
 
-/* Мобильные - 1 колонка */
 @media (max-width: 640px) {
   .flavor-list {
     grid-template-columns: 1fr;
   }
 }
 
-/* Планшеты и больше - 2 колонки */
 @media (min-width: 641px) {
   .flavor-list {
     grid-template-columns: repeat(2, 1fr);
@@ -599,7 +606,6 @@ header {
   gap: clamp(8px, 1.5vw, 10px);
 }
 
-/* На больших экранах кнопки в ряд */
 @media (min-width: 641px) {
   .modal-footer {
     flex-direction: row;
@@ -891,93 +897,306 @@ header {
 }
 
 /* ==========================================
-   ДОПОЛНИТЕЛЬНЫЕ АДАПТАЦИИ
+   АДМИН-ПАНЕЛЬ И АВТОРИЗАЦИЯ
    ========================================== */
 
-/* Для больших экранов - центрируем контент */
-@media (min-width: 1441px) {
-  .search-container,
-  .categories,
-  .products-grid {
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.admin-page {
+  display: none;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Улучшение для touch устройств */
-@media (hover: none) and (pointer: coarse) {
-  .icon-btn,
-  .btn-select,
-  .btn-primary,
-  .btn-secondary,
-  .btn-remove,
-  .flavor-item,
-  .delivery-option,
-  .nav-item {
-    min-height: 44px; /* Apple recommended tap target */
-  }
-  
-  .product-card:hover,
-  .category-card:hover,
-  .btn-select:hover {
-    transform: none;
-  }
-  
-  .product-card:active {
-    transform: scale(0.98);
-  }
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: var(--dark-light);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
 }
 
-/* Landscape на мобильных */
-@media (max-width: 768px) and (orientation: landscape) {
-  body {
-    padding-bottom: 65px;
-  }
-  
-  .nav-footer {
-    padding: 8px 0;
-  }
-  
-  .product-image {
-    height: 100px;
-  }
-  
-  .modal-container {
-    max-height: 90vh;
-  }
+.login-container h2 {
+  color: var(--primary);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Анимации */
-@keyframes fadeIn {
+.login-input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gray);
+  font-weight: 600;
+}
+
+.login-input-group input {
+  width: 100%;
+  padding: 15px;
+  background: var(--dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--light);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.login-input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+.login-error {
+  color: var(--danger);
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255, 71, 87, 0.1);
+  border-radius: 10px;
+  display: none;
+}
+
+.admin-section {
+  background: var(--dark-light);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-section h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gray);
+}
+
+.btn-logout {
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-logout:hover {
+  background: #ff2e43;
+  transform: translateY(-2px);
+}
+
+.products-list {
+  display: grid;
+  gap: 15px;
+}
+
+.admin-product-card {
+  background: var(--dark);
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-product-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.admin-product-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-admin {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-edit {
+  background: var(--warning);
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #ff8800;
+}
+
+.btn-delete {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #ff2e43;
+}
+
+.btn-add {
+  background: var(--success);
+  color: white;
+}
+
+.btn-add:hover {
+  background: #24c77a;
+}
+
+.flavors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.flavor-tag {
+  background: rgba(138, 43, 226, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.flavor-tag button {
+  background: var(--danger);
+  border: none;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.flavor-tag button:hover {
+  background: #ff2e43;
+  transform: scale(1.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  background: var(--dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--light);
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.add-flavor-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-flavor-container input {
+  flex: 1;
+}
+
+/* Уведомления о синхронизации */
+.sync-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--success);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10000;
+  animation: slideIn 0.3s ease-out;
+}
+
+.sync-notification.error {
+  background: var(--danger);
+}
+
+@keyframes slideIn {
   from {
+    transform: translateX(100%);
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.product-card,
-.category-card {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Улучшение производительности */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Темная тема для браузеров */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--dark);
   }
 }
 
@@ -999,6 +1218,31 @@ header {
 .modal-content::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
 }
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card,
+.category-card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1012,6 +1256,9 @@ header {
   </div>
   
   <div class="header-actions">
+    <div class="icon-btn" onclick="openAdminPage()" title="Админ-панель">
+      <i class="fas fa-cog"></i>
+    </div>
     <div class="icon-btn" onclick="openCartPage()">
       <i class="fas fa-shopping-cart"></i>
       <div class="cart-badge" id="header-cart-badge">0</div>
@@ -1030,9 +1277,9 @@ header {
     </div>
     
     <div class="categories">
-      <div class="category-card" onclick="filterProducts('Жидкости')">
-        <img src="https://i.imgur.com/QGv2Uvv.png" alt="Жидкости" class="category-image">
-        <div class="category-name">Жидкости</div>
+      <div class="category-card" onclick="filterProducts('Жидкості')">
+        <img src="https://i.imgur.com/QGv2Uvv.png" alt="Жидкості" class="category-image">
+        <div class="category-name">Жидкості</div>
       </div>
       
       <div class="category-card" onclick="filterProducts('Одноразки')">
@@ -1045,9 +1292,9 @@ header {
         <div class="category-name">Поды</div>
       </div>
       
-      <div class="category-card" onclick="filterProducts('Картриджи')">
-        <img src="https://i.imgur.com/gvDaEyg.png" alt="Картриджи" class="category-image">
-        <div class="category-name">Картриджи</div>
+      <div class="category-card" onclick="filterProducts('Картриджі')">
+        <img src="https://i.imgur.com/gvDaEyg.png" alt="Картриджі" class="category-image">
+        <div class="category-name">Картриджі</div>
       </div>
     </div>
     
@@ -1071,6 +1318,53 @@ header {
       <!-- Сумма заказа -->
     </div>
   </div>
+
+  <!-- Админ-панель (только после авторизации) -->
+  <div id="admin-page" class="admin-page">
+    <!-- Форма авторизации -->
+    <div id="login-form" class="login-container">
+      <h2><i class="fas fa-lock"></i> Вхід в адмін-панель</h2>
+      <div class="login-input-group">
+        <label>Логін</label>
+        <input type="text" id="admin-username" placeholder="Введіть логін">
+      </div>
+      <div class="login-input-group">
+        <label>Пароль</label>
+        <input type="password" id="admin-password" placeholder="Введіть пароль">
+      </div>
+      <div class="login-error" id="login-error">
+        Неправильний логін або пароль
+      </div>
+      <button class="btn-primary" onclick="loginAdmin()" style="width: 100%; margin-top: 20px;">
+        <i class="fas fa-sign-in-alt"></i> Увійти
+      </button>
+    </div>
+
+    <!-- Панель управления (после входа) -->
+    <div id="admin-panel" style="display: none;">
+      <div class="admin-header">
+        <div>
+          <h2><i class="fas fa-box"></i> Управління товарами</h2>
+          <div class="admin-user-info">
+            <i class="fas fa-user"></i>
+            <span id="current-user">Адмін</span>
+          </div>
+        </div>
+        <div>
+          <button class="btn-admin btn-add" onclick="openAddProductModal()">
+            <i class="fas fa-plus"></i> Додати товар
+          </button>
+          <button class="btn-logout" onclick="logoutAdmin()">
+            <i class="fas fa-sign-out-alt"></i> Вийти
+          </button>
+        </div>
+      </div>
+      
+      <div class="products-list" id="admin-products-list">
+        <!-- Список товаров для редактирования -->
+      </div>
+    </div>
+  </div>
 </main>
 
 <!-- Нижняя навигация -->
@@ -1082,34 +1376,44 @@ header {
   
   <div class="nav-item" onclick="openCartPage()">
     <i class="fas fa-shopping-cart"></i>
-    <span>Корзина</span>
+    <span>Кошик</span>
     <div class="cart-badge" id="cart-badge">0</div>
+  </div>
+  
+  <div class="nav-item" onclick="openAdminPage()">
+    <i class="fas fa-cog"></i>
+    <span>Адмін</span>
   </div>
 </div>
 
-<!-- Модальное окно выбора вкуса -->
+<!-- Модальное окно выбора вкуса (с множественным выбором) -->
 <div id="flavor-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">Выберите вкус</div>
+      <div class="modal-title" id="modal-title">Виберіть смак</div>
       <button class="modal-close" onclick="closeFlavorModal()">
         <i class="fas fa-times"></i>
       </button>
     </div>
     
     <div class="modal-content">
+      <div class="multi-select-info">
+        <i class="fas fa-info-circle"></i>
+        <span>Ви можете вибрати кілька варіантів. Вибрано: <span class="selected-count" id="selected-count">0</span></span>
+      </div>
+      
       <div class="flavor-list" id="flavor-list">
         <!-- Список вкусов будет добавлен через JS -->
       </div>
     </div>
     
     <div class="modal-footer">
-      <button class="btn-primary" onclick="addToCartWithFlavor()">
+      <button class="btn-primary" onclick="addToCartWithFlavors()">
         <i class="fas fa-cart-plus"></i>
-        Добавить в корзину
+        Додати в кошик
       </button>
       <button class="btn-secondary" onclick="closeFlavorModal()">
-        Отмена
+        Скасувати
       </button>
     </div>
   </div>
@@ -1119,7 +1423,7 @@ header {
 <div id="delivery-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
-      <div class="modal-title">Выберите способ доставки</div>
+      <div class="modal-title">Виберіть спосіб доставки</div>
       <button class="modal-close" onclick="closeDeliveryModal()">
         <i class="fas fa-times"></i>
       </button>
@@ -1133,20 +1437,20 @@ header {
           </div>
           <div class="delivery-info">
             <div class="delivery-name">INPOST</div>
-            <div class="delivery-desc">Доставка в постамат INPOST 20zł. Бесплатная доставка при заказе от 3 жиж или 135zł</div>
+            <div class="delivery-desc">Доставка в постамат INPOST 20zł. Безкоштовна доставка при замовленні від 3 жиж або 135zł</div>
           </div>
           <div class="delivery-check">
             <i class="fas fa-check"></i>
           </div>
         </div>
         
-        <div class="delivery-option" onclick="selectDelivery('Личная встреча')">
+        <div class="delivery-option" onclick="selectDelivery('Особиста зустріч')">
           <div class="delivery-icon">
             <i class="fas fa-handshake"></i>
           </div>
           <div class="delivery-info">
-            <div class="delivery-name">Личная встреча</div>
-            <div class="delivery-desc">Встреча в удобном для вас месте. только город (Tychy) Обсудите детали с менеджером</div>
+            <div class="delivery-name">Особиста зустріч</div>
+            <div class="delivery-desc">Зустріч у зручному для вас місці. тільки місто (Tychy) Обговоріть деталі з менеджером</div>
           </div>
           <div class="delivery-check">
             <i class="fas fa-check"></i>
@@ -1155,146 +1459,311 @@ header {
       </div>
       
       <div style="margin-top: 20px; padding: 15px; background: rgba(138, 43, 226, 0.1); border-radius: 12px;">
-        <p style="color: var(--gray); font-size: 14px; margin-bottom: 10px;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>После выбора способа доставки заказ будет скопирован в буфер обмена и откроется Telegram для связи с менеджером.</p>
+        <p style="color: var(--gray); font-size: 14px; margin-bottom: 10px;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>Після вибору способу доставки замовлення буде скопійовано в буфер обміну та відкриється Telegram для зв'язку з менеджером.</p>
       </div>
     </div>
     
     <div class="modal-footer">
       <button class="btn-primary" onclick="confirmDeliveryAndCopy()">
         <i class="fas fa-copy"></i>
-        Подтвердить и скопировать заказ
+        Підтвердити та скопіювати замовлення
       </button>
       <button class="btn-secondary" onclick="closeDeliveryModal()">
-        Отмена
+        Скасувати
       </button>
     </div>
   </div>
 </div>
 
-<script>
-// ========== ДАННЫЕ ТОВАРОВ ==========
-const allProducts = [
-  {
-    id: 1,
-    name: 'Elfliq 30ml 5%',
-    category: 'Жидкости',
-    price: 45,
-    image: 'https://i.imgur.com/vEq09Ta.png',
-    description: 'Elfliq — фірмові рідини Elf Bar з яскравими та впізнаваними смаками',
-    flavors: [
-        'Apple Pear', 'Blackberry Lemon', 'Blackcurrant aniseed', 'Blueberry',
-        'Blueberry Raspberry Pomegranate', 'Blueberry Rose Mint', 'Blueberry Sour Raspberry',
-        'Blue Razz Ice', 'Blue Razz Lemonade', 'Cherry', 'Cherry Cola', 'Cherry Lemon Peach',
-        'Cola', 'Cool Mint', 'Double Apple', 'Watermelon Cherry', 'Strawberry Cherry Lemon', 'Grape Cherry', 'Green Grape Rose', 'Jasmine',                                    	'Raspberry', 'Pineapple Ice', 'Sour Watermelon  Gummy', 'Strawberry Banana', 'Mango Peach', 'Pineapple Colada', 'Pink Lemonade Soda',
-	'Apple Peach', 'Blackberry Lemon', 'Blackcurrant Aniseed', 'Blue Razz Lemonade',
-	'Blueberry', 'Pink Lemonade Soda', 'Cherry', 'Cola', 'Elf Jack',
-	'Grape', 'Cherry Cola', 'PB Cloud', 'Pina Colada', 'Pink Grapefruit',
-	'Pink Lemonade', 'Sour Apple', 'Strawberry Ice', 'Strawberry Kiwi',
-	'Strawberry Raspberry Cherry Ice', 'Strawberry Snoow', 'Rhubarb Snoow',
-	'Peach Ice', 'Blueberry Sour Raspberry', 'Spearmint'
-    ]
-  },
-  {
-    id: 2,
-    name: 'Chaser Lux 30ml 5%',
-    category: 'Жидкости',
-    price: 50,
-    image: 'https://i.imgur.com/IeTuHXS.png',
-    description: 'Премиальная линейка солей для POD-систем',
-    flavors: [
-      'Tropic Punch Orange', 'Coconut Melon', 'Vitamine', 'Kiwi Passionfruit Guava',
-      'Blueberry Raspberry', 'Sangria', 'Turbo mint'
-    ]
-  },
-  {
-    id: 3,
-    name: 'Chaser Lux 30ml 6%',
-    category: 'Жидкости',
-    price: 50,
-    image: 'https://i.imgur.com/Z0dIMUY.png',
-    description: 'Премиальная линейка солей для POD-систем',
-    flavors: [
-      'Sour Apple', 'Blackberry Lemonade', 'Sour Watermelon Candy', 'Peach Yogurt',
-      'Blueberry Raspberry', 'Grape Mint', 'Watermelon Raspberry', 'Peach Tea',
-      'Kiwi Passion Fruit Guava', 'Cider Berry', 'Coconut Melon'
-    ]
-  },
-  {
-    id: 4,
-    name: 'Chaser for pods 30ml 5%',
-    category: 'Жидкости',
-    price: 50,
-    image: 'https://i.imgur.com/n8NuNv9.png',
-    description: 'Специально разработан для POD-систем',
-    flavors: [
-      'Ягоди', 'Блакитна малина', 'М\'ята', 'Персик', 'Полуниця',
-      'Кавун', 'Диня', 'Грейпфрут', 'Жовта малина'
-    ]
-  },
-  {
-    id: 5,
-    name: 'CHASER LIMITINI EDITINI 30ML 5%',
-    category: 'Жидкости',
-    price: 50,
-    image: 'https://i.imgur.com/4LDRirY.png',
-    description: 'Лимитированная серия с уникальными вкусами',
-    flavors: [
-      'ALOE MINT', 'JASMINE PEACH', 'PINEAPPLE PASSION LIME',
-      'BALERRINA CAPPUCCINO', 'GLORBO FRUTTODRILLO', 'TUNG TUNG TUNG SAHUR'
-    ]
-  },
-  {
-    id: 6,
-    name: 'ELFBAR RAYA D3 - 25.000 PUFFS',
-    category: 'Одноразки',
-    price: 80,
-    image: 'https://i.imgur.com/xhr3S0G.png',
-    description: 'Одноразовая электронная сигарета на 25,000 затяжек',
-    flavors: [
-      'Blueberry Ice', 'Strawberry Grape', 'Blackberry Cranberry', 'Watermelon Ice',
-      'Strawberry Watermelon', 'Peach Ice', 'Strawberry Ice', 'Blue Razz Ice',
-      'Blueberry Raspberry', 'Grape Mint', 'Watermelon Bubble Gum', 'Apple Peach',
-      'Strawberry Banana', 'Strawberry Peach', 'Lemon Watermelon', 'VMT'
-    ]
-  },
-  {
-    id: 7,
-    name: 'VAPORESSO XROS 5 MINI',
-    category: 'Поды',
-    price: 120,
-    image: 'https://i.imgur.com/PW1Pqyz.png',
-    description: 'Компактная POD-система',
-    flavors: [
-      'CARBON BLACK', 'SKY BLUE', 'PURPLE', 'PASTEL CRYSTAL',
-      'TITANIUM SILVER', 'FLOWING GREEN'
-    ]
-  },
-  {
-    id: 8,
-    name: 'Катридж XROS 5 MINI',
-    category: 'Картриджи',
-    price: 25,
-    image: 'https://i.imgur.com/gvDaEyg.png',
-    description: 'Сменные картриджи',
-    flavors: ['3ml 0.4Ω', '2ml 0.6Ω']
-  }
-];
+<!-- Модальное окно редактирования товара -->
+<div id="edit-product-modal" class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="modal-title" id="edit-modal-title">Редагувати товар</div>
+      <button class="modal-close" onclick="closeEditProductModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-content">
+      <form id="edit-product-form">
+        <div class="form-group">
+          <label>Назва товару</label>
+          <input type="text" id="edit-product-name" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Категорія</label>
+          <select id="edit-product-category" required>
+            <option value="Жидкості">Жидкості</option>
+            <option value="Одноразки">Одноразки</option>
+            <option value="Поды">Поды</option>
+            <option value="Картриджі">Картриджі</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Ціна (zł)</label>
+          <input type="number" id="edit-product-price" step="0.01" required>
+        </div>
+        
+        <div class="form-group">
+          <label>URL зображення</label>
+          <input type="url" id="edit-product-image" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Опис</label>
+          <textarea id="edit-product-description"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Смаки/Варіанти</label>
+          <div id="edit-flavors-container"></div>
+          <div class="add-flavor-container">
+            <input type="text" id="new-flavor-input" placeholder="Введіть новий смак">
+            <button type="button" class="btn-admin btn-add" onclick="addFlavorToEdit()">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="saveProductChanges()">
+        <i class="fas fa-save"></i>
+        Зберегти
+      </button>
+      <button class="btn-secondary" onclick="closeEditProductModal()">
+        Скасувати
+      </button>
+    </div>
+  </div>
+</div>
 
-// Корзина и состояние
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+// ========== FIREBASE CONFIGURATION ==========
+const firebaseConfig = {
+  apiKey: "AIzaSyDXQjUEO-Yn3poaAq5nRjznMykCdr1fhnM",
+  authDomain: "vapehub-70582.firebaseapp.com",
+  projectId: "vapehub-70582",
+  storageBucket: "vapehub-70582.firebasestorage.app",
+  messagingSenderId: "784825856492",
+  appId: "1:784825856492:web:5af533ae0c2d69ca3590c9",
+  measurementId: "G-B6Q0WKP8DD"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const database = firebase.database();
+
+// ========== АДМИН КРЕДЕНШИАЛЫ ==========
+// Логин: admin
+// Пароль: CloudHub2024!
+// Вы можете изменить эти данные в Firebase Authentication
+
+// ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ==========
+let allProducts = [];
 let cart = [];
 let currentProduct = null;
-let selectedFlavor = null;
+let selectedFlavors = [];
 let selectedDelivery = null;
+let editingProductId = null;
+let isAdminLoggedIn = false;
 
 // ========== ОСНОВНЫЕ ФУНКЦИИ ==========
 document.addEventListener('DOMContentLoaded', function() {
+  // Проверяем авторизацию
+  checkAuthState();
+  
+  // Загружаем корзину из localStorage
   const savedCart = localStorage.getItem('vapeCart');
   if (savedCart) {
     cart = JSON.parse(savedCart);
     updateCartBadge();
   }
-  renderProducts(allProducts);
+  
+  // Загружаем товары из Firebase
+  loadProductsFromFirebase();
+  
+  // Настраиваем слушатель для обновлений в реальном времени
+  setupRealtimeUpdates();
 });
+
+function checkAuthState() {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      isAdminLoggedIn = true;
+      showAdminPanel();
+    } else {
+      isAdminLoggedIn = false;
+      showLoginForm();
+    }
+  });
+}
+
+function setupRealtimeUpdates() {
+  // Слушаем изменения в Firestore
+  db.collection("products").onSnapshot((snapshot) => {
+    console.log("Получены обновления товаров из Firebase");
+    loadProductsFromFirebase();
+    
+    // Показываем уведомление пользователю
+    if (document.getElementById('shop-page').style.display !== 'none') {
+      showSyncNotification("Товары обновлены в реальном времени!", "success");
+    }
+  }, (error) => {
+    console.error("Ошибка при получении обновлений:", error);
+  });
+}
+
+function loadProductsFromFirebase() {
+  db.collection("products").orderBy("id").get()
+    .then((querySnapshot) => {
+      allProducts = [];
+      querySnapshot.forEach((doc) => {
+        allProducts.push({ id: doc.id, ...doc.data() });
+      });
+      
+      // Если нет товаров, добавляем начальные данные
+      if (allProducts.length === 0) {
+        addInitialProducts();
+      } else {
+        renderProducts(allProducts);
+        if (isAdminLoggedIn) {
+          renderAdminProducts();
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("Ошибка загрузки товаров:", error);
+      showSyncNotification("Ошибка загрузки товаров", "error");
+    });
+}
+
+function addInitialProducts() {
+  const initialProducts = [
+    {
+      id: "1",
+      name: 'Elfliq 30ml 5%',
+      category: 'Жидкості',
+      price: 45,
+      image: 'https://i.imgur.com/vEq09Ta.png',
+      description: 'Elfliq — фірмові рідини Elf Bar з яскравими та впізнаваними смаками',
+      flavors: [
+        'Apple Pear', 'Blackberry Lemon', 'Blackcurrant aniseed', 'Blueberry',
+        'Blueberry Raspberry Pomegranate', 'Blueberry Rose Mint', 'Blueberry Sour Raspberry',
+        'Blue Razz Ice', 'Blue Razz Lemonade', 'Cherry', 'Cherry Cola', 'Cherry Lemon Peach',
+        'Cola', 'Cool Mint', 'Double Apple', 'Watermelon Cherry', 'Strawberry Cherry Lemon'
+      ]
+    },
+    {
+      id: "2",
+      name: 'Chaser Lux 30ml 5%',
+      category: 'Жидкості',
+      price: 50,
+      image: 'https://i.imgur.com/IeTuHXS.png',
+      description: 'Преміальна лінійка солей для POD-систем',
+      flavors: [
+        'Tropic Punch Orange', 'Coconut Melon', 'Vitamine', 'Kiwi Passionfruit Guava',
+        'Blueberry Raspberry', 'Sangria', 'Turbo mint'
+      ]
+    },
+    {
+      id: "3",
+      name: 'Chaser Lux 30ml 6%',
+      category: 'Жидкості',
+      price: 50,
+      image: 'https://i.imgur.com/Z0dIMUY.png',
+      description: 'Преміальна лінійка солей для POD-систем',
+      flavors: [
+        'Sour Apple', 'Blackberry Lemonade', 'Sour Watermelon Candy', 'Peach Yogurt',
+        'Blueberry Raspberry', 'Grape Mint', 'Watermelon Raspberry', 'Peach Tea'
+      ]
+    },
+    {
+      id: "4",
+      name: 'Chaser for pods 30ml 5%',
+      category: 'Жидкості',
+      price: 50,
+      image: 'https://i.imgur.com/n8NuNv9.png',
+      description: 'Спеціально розроблений для POD-систем',
+      flavors: [
+        'Ягоди', 'Блакитна малина', 'М\'ята', 'Персик', 'Полуниця',
+        'Кавун', 'Диня', 'Грейпфрут', 'Жовта малина'
+      ]
+    },
+    {
+      id: "5",
+      name: 'CHASER LIMITINI EDITINI 30ML 5%',
+      category: 'Жидкості',
+      price: 50,
+      image: 'https://i.imgur.com/4LDRirY.png',
+      description: 'Лімітована серія з унікальними смаками',
+      flavors: [
+        'ALOE MINT', 'JASMINE PEACH', 'PINEAPPLE PASSION LIME',
+        'BALERRINA CAPPUCCINO', 'GLORBO FRUTTODRILLO', 'TUNG TUNG TUNG SAHUR'
+      ]
+    },
+    {
+      id: "6",
+      name: 'ELFBAR RAYA D3 - 25.000 PUFFS',
+      category: 'Одноразки',
+      price: 80,
+      image: 'https://i.imgur.com/xhr3S0G.png',
+      description: 'Одноразова електронна сигарета на 25,000 затяжок',
+      flavors: [
+        'Blueberry Ice', 'Strawberry Grape', 'Blackberry Cranberry', 'Watermelon Ice',
+        'Strawberry Watermelon', 'Peach Ice', 'Strawberry Ice', 'Blue Razz Ice'
+      ]
+    },
+    {
+      id: "7",
+      name: 'VAPORESSO XROS 5 MINI',
+      category: 'Поды',
+      price: 120,
+      image: 'https://i.imgur.com/PW1Pqyz.png',
+      description: 'Компактна POD-система',
+      flavors: [
+        'CARBON BLACK', 'SKY BLUE', 'PURPLE', 'PASTEL CRYSTAL',
+        'TITANIUM SILVER', 'FLOWING GREEN'
+      ]
+    },
+    {
+      id: "8",
+      name: 'Катридж XROS 5 MINI',
+      category: 'Картриджі',
+      price: 25,
+      image: 'https://i.imgur.com/gvDaEyg.png',
+      description: 'Змінні картриджі',
+      flavors: ['3ml 0.4Ω', '2ml 0.6Ω']
+    }
+  ];
+
+  const batch = db.batch();
+  initialProducts.forEach(product => {
+    const docRef = db.collection("products").doc(product.id.toString());
+    batch.set(docRef, product);
+  });
+
+  batch.commit()
+    .then(() => {
+      console.log("Начальные товары добавлены в Firebase");
+      loadProductsFromFirebase();
+    })
+    .catch((error) => {
+      console.error("Ошибка добавления начальных товаров:", error);
+    });
+}
 
 function renderProducts(products) {
   const container = document.getElementById('products-container');
@@ -1304,8 +1773,8 @@ function renderProducts(products) {
     container.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
         <i class="fas fa-box-open"></i>
-        <h3>Товары не найдены</h3>
-        <p>Попробуйте изменить запрос поиска</p>
+        <h3>Товари не знайдено</h3>
+        <p>Спробуйте змінити запит пошуку</p>
       </div>
     `;
     return;
@@ -1315,23 +1784,23 @@ function renderProducts(products) {
     const productCard = document.createElement('div');
     productCard.className = 'product-card';
     
-    let buttonText = 'В корзину';
-    let buttonAction = `addToCartSimple(${product.id})`;
+    let buttonText = 'В кошик';
+    let buttonAction = `addToCartSimple('${product.id}')`;
     
     if (product.flavors && product.flavors.length > 0) {
       if (product.category === 'Поды') {
-        buttonText = 'Выбрать цвет';
-      } else if (product.category === 'Картриджи') {
-        buttonText = 'Выбрать Ω';
+        buttonText = 'Вибрати колір';
+      } else if (product.category === 'Картриджі') {
+        buttonText = 'Вибрати Ω';
       } else {
-        buttonText = 'Выбрать вкус';
+        buttonText = 'Вибрати смак';
       }
-      buttonAction = `openFlavorModal(${product.id})`;
+      buttonAction = `openFlavorModal('${product.id}')`;
     }
     
     productCard.innerHTML = `
       <div class="product-image">
-        <img src="${product.image}" alt="${product.name}">
+        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
       </div>
       <div class="product-info">
         <div class="product-name">${product.name}</div>
@@ -1357,7 +1826,7 @@ function searchProducts() {
   const filtered = allProducts.filter(product => 
     product.name.toLowerCase().includes(query) ||
     product.category.toLowerCase().includes(query) ||
-    product.description.toLowerCase().includes(query)
+    (product.description && product.description.toLowerCase().includes(query))
   );
   
   renderProducts(filtered);
@@ -1379,18 +1848,82 @@ function updateCartBadge() {
   document.getElementById('header-cart-badge').textContent = count;
 }
 
+// ========== АВТОРИЗАЦИЯ АДМИНА ==========
+function loginAdmin() {
+  const username = document.getElementById('admin-username').value.trim();
+  const password = document.getElementById('admin-password').value.trim();
+  const errorElement = document.getElementById('login-error');
+  
+  // Проверяем валидность
+  if (!username || !password) {
+    errorElement.textContent = 'Будь ласка, заповніть всі поля';
+    errorElement.style.display = 'block';
+    return;
+  }
+  
+  // Firebase Authentication
+  auth.signInWithEmailAndPassword(`${username}@cloudhub.com`, password)
+    .then((userCredential) => {
+      // Успешный вход
+      errorElement.style.display = 'none';
+      showNotification('Успішний вхід в адмін-панель');
+    })
+    .catch((error) => {
+      // Пробуем альтернативный метод (создаем пользователя если нет)
+      if (error.code === 'auth/user-not-found') {
+        // Создаем нового админа
+        auth.createUserWithEmailAndPassword(`${username}@cloudhub.com`, password)
+          .then((userCredential) => {
+            errorElement.style.display = 'none';
+            showNotification('Адміністратора створено та успішно авторизовано');
+          })
+          .catch((createError) => {
+            errorElement.textContent = 'Помилка створення адміністратора: ' + createError.message;
+            errorElement.style.display = 'block';
+          });
+      } else {
+        errorElement.textContent = 'Неправильний логін або пароль';
+        errorElement.style.display = 'block';
+      }
+    });
+}
+
+function logoutAdmin() {
+  auth.signOut()
+    .then(() => {
+      showNotification('Ви вийшли з адмін-панелі');
+    })
+    .catch((error) => {
+      console.error("Ошибка выхода:", error);
+    });
+}
+
+function showAdminPanel() {
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  document.getElementById('current-user').textContent = auth.currentUser ? auth.currentUser.email.split('@')[0] : 'Адмін';
+  
+  // Загружаем товары для админ-панели
+  renderAdminProducts();
+}
+
+function showLoginForm() {
+  document.getElementById('login-form').style.display = 'block';
+  document.getElementById('admin-panel').style.display = 'none';
+}
+
 // ========== МОДАЛЬНОЕ ОКНО ВКУСОВ ==========
 function openFlavorModal(productId) {
   currentProduct = allProducts.find(p => p.id === productId);
-  selectedFlavor = null;
+  selectedFlavors = [];
   
   if (!currentProduct) return;
   
-  let modalTitle = 'Выберите вкус';
+  let modalTitle = 'Виберіть смак';
   if (currentProduct.category === 'Поды') {
-    modalTitle = 'Выберите цвет';
-  } else if (currentProduct.category === 'Картриджи') {
-    modalTitle = 'Выберите сопротивление';
+    modalTitle = 'Виберіть колір';
+  } else if (currentProduct.category === 'Картриджі') {
+    modalTitle = 'Виберіть опір';
   }
   
   document.getElementById('modal-title').textContent = `${modalTitle} (${currentProduct.name})`;
@@ -1398,68 +1931,86 @@ function openFlavorModal(productId) {
   const flavorList = document.getElementById('flavor-list');
   flavorList.innerHTML = '';
   
-  currentProduct.flavors.forEach(flavor => {
-    const flavorItem = document.createElement('div');
-    flavorItem.className = 'flavor-item';
-    flavorItem.onclick = () => selectFlavor(flavor);
-    
-    flavorItem.innerHTML = `
-      <div class="flavor-name">${flavor}</div>
-      <div class="flavor-check">
-        <i class="fas fa-check"></i>
-      </div>
-    `;
-    
-    flavorList.appendChild(flavorItem);
-  });
+  if (currentProduct.flavors && currentProduct.flavors.length > 0) {
+    currentProduct.flavors.forEach(flavor => {
+      const flavorItem = document.createElement('div');
+      flavorItem.className = 'flavor-item';
+      flavorItem.onclick = () => toggleFlavor(flavor);
+      
+      flavorItem.innerHTML = `
+        <div class="flavor-name">${flavor}</div>
+        <div class="flavor-check">
+          <i class="fas fa-check"></i>
+        </div>
+      `;
+      
+      flavorList.appendChild(flavorItem);
+    });
+  }
   
+  updateSelectedCount();
   document.getElementById('flavor-modal').classList.add('active');
 }
 
 function closeFlavorModal() {
   document.getElementById('flavor-modal').classList.remove('active');
   currentProduct = null;
-  selectedFlavor = null;
+  selectedFlavors = [];
 }
 
-function selectFlavor(flavor) {
-  selectedFlavor = flavor;
+function toggleFlavor(flavor) {
+  const index = selectedFlavors.indexOf(flavor);
+  
+  if (index > -1) {
+    selectedFlavors.splice(index, 1);
+  } else {
+    selectedFlavors.push(flavor);
+  }
   
   document.querySelectorAll('.flavor-item').forEach(item => {
-    item.classList.remove('selected');
-  });
-  
-  document.querySelectorAll('.flavor-item').forEach(item => {
-    if (item.querySelector('.flavor-name').textContent === flavor) {
+    const flavorName = item.querySelector('.flavor-name').textContent;
+    if (selectedFlavors.includes(flavorName)) {
       item.classList.add('selected');
+    } else {
+      item.classList.remove('selected');
     }
   });
+  
+  updateSelectedCount();
 }
 
-function addToCartWithFlavor() {
+function updateSelectedCount() {
+  document.getElementById('selected-count').textContent = selectedFlavors.length;
+}
+
+function addToCartWithFlavors() {
   if (!currentProduct) return;
   
-  if (!selectedFlavor && currentProduct.flavors.length > 0) {
-    alert('Пожалуйста, выберите вкус');
+  if (selectedFlavors.length === 0 && currentProduct.flavors && currentProduct.flavors.length > 0) {
+    alert('Будь ласка, виберіть хоча б один варіант');
     return;
   }
   
-  const cartItem = {
-    id: Date.now(),
-    productId: currentProduct.id,
-    name: currentProduct.name,
-    flavor: selectedFlavor,
-    category: currentProduct.category,
-    price: currentProduct.price,
-    image: currentProduct.image
-  };
+  selectedFlavors.forEach(flavor => {
+    const cartItem = {
+      id: Date.now() + Math.random(),
+      productId: currentProduct.id,
+      name: currentProduct.name,
+      flavor: flavor,
+      category: currentProduct.category,
+      price: currentProduct.price,
+      image: currentProduct.image
+    };
+    
+    cart.push(cartItem);
+  });
   
-  cart.push(cartItem);
   saveCart();
   updateCartBadge();
   closeFlavorModal();
   
-  showNotification(`Товар добавлен в корзину: ${currentProduct.name}${selectedFlavor ? ` (${selectedFlavor})` : ''}`);
+  const count = selectedFlavors.length;
+  showNotification(`Додано в кошик: ${currentProduct.name} (${count} ${count === 1 ? 'варіант' : 'варіанти'})`);
 }
 
 function addToCartSimple(productId) {
@@ -1480,7 +2031,7 @@ function addToCartSimple(productId) {
   saveCart();
   updateCartBadge();
   
-  showNotification(`Товар добавлен в корзину: ${product.name}`);
+  showNotification(`Товар додано в кошик: ${product.name}`);
 }
 
 function saveCart() {
@@ -1516,7 +2067,7 @@ function selectDelivery(method) {
 
 function confirmDeliveryAndCopy() {
   if (!selectedDelivery) {
-    alert('Пожалуйста, выберите способ доставки');
+    alert('Будь ласка, виберіть спосіб доставки');
     return;
   }
   
@@ -1528,6 +2079,7 @@ function confirmDeliveryAndCopy() {
 function openCartPage() {
   document.getElementById('shop-page').style.display = 'none';
   document.getElementById('cart-page').style.display = 'block';
+  document.getElementById('admin-page').style.display = 'none';
   
   document.querySelectorAll('.nav-item').forEach(item => {
     item.classList.remove('active');
@@ -1540,6 +2092,7 @@ function openCartPage() {
 function goToHome() {
   document.getElementById('shop-page').style.display = 'block';
   document.getElementById('cart-page').style.display = 'none';
+  document.getElementById('admin-page').style.display = 'none';
   
   document.querySelectorAll('.nav-item').forEach(item => {
     item.classList.remove('active');
@@ -1557,8 +2110,8 @@ function renderCart() {
     container.innerHTML = `
       <div class="empty-state">
         <i class="fas fa-shopping-cart"></i>
-        <h3>Корзина пуста</h3>
-        <p>Добавьте товары из каталога</p>
+        <h3>Кошик порожній</h3>
+        <p>Додайте товари з каталогу</p>
       </div>
     `;
     summaryContainer.innerHTML = '';
@@ -1574,7 +2127,7 @@ function renderCart() {
     cartItem.innerHTML = `
       <div style="display: flex; align-items: center; gap: 15px; flex: 1;">
         <div style="width: 50px; height: 50px; background: #1a1a24; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-          <img src="${item.image}" alt="${item.name}" style="width: 30px; height: 30px; object-fit: contain;">
+          <img src="${item.image}" alt="${item.name}" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.src='https://via.placeholder.com/50?text=Img'">
         </div>
         <div class="cart-item-info">
           <div class="cart-item-name">${item.name}</div>
@@ -1595,17 +2148,17 @@ function renderCart() {
   summaryContainer.innerHTML = `
     <div class="cart-summary">
       <div class="cart-total">
-        <span>Итого:</span>
+        <span>Разом:</span>
         <span class="cart-total-amount">${total.toFixed(2)} zł</span>
       </div>
       <button class="telegram-payment" onclick="openDeliveryModal()">
         <i class="fas fa-copy"></i>
-        Оформить заказ в Telegram
+        Оформити замовлення в Telegram
       </button>
       <div class="payment-info">
-        <p>Для оформления заказа выберите способ доставки и свяжитесь с менеджером в Telegram:</p>
+        <p>Для оформлення замовлення виберіть спосіб доставки та зв'яжіться з менеджером у Telegram:</p>
         <div class="telegram-username">@managercloudm</div>
-        <p>Заказ будет автоматически скопирован в буфер обмена</p>
+        <p>Замовлення буде автоматично скопійовано в буфер обміну</p>
       </div>
     </div>
   `;
@@ -1618,14 +2171,292 @@ function removeFromCart(index) {
     saveCart();
     updateCartBadge();
     renderCart();
-    showNotification(`Товар удален из корзины: ${item.name}`);
+    showNotification(`Товар видалено з кошика: ${item.name}`);
   }
+}
+
+// ========== АДМИН-ПАНЕЛЬ ==========
+function openAdminPage() {
+  if (!isAdminLoggedIn) {
+    showNotification('Будь ласка, увійдіть в адмін-панель');
+  }
+  
+  document.getElementById('shop-page').style.display = 'none';
+  document.getElementById('cart-page').style.display = 'none';
+  document.getElementById('admin-page').style.display = 'block';
+  
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  document.querySelectorAll('.nav-item')[2].classList.add('active');
+  
+  if (isAdminLoggedIn) {
+    renderAdminProducts();
+  }
+}
+
+function renderAdminProducts() {
+  const container = document.getElementById('admin-products-list');
+  container.innerHTML = '';
+  
+  allProducts.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'admin-product-card';
+    
+    const flavorsHTML = product.flavors && product.flavors.length > 0 
+      ? `
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (${product.flavors.length}):</strong>
+          <div class="flavors-grid">
+            ${product.flavors.map(flavor => `
+              <div class="flavor-tag">
+                <span>${flavor}</span>
+                <button onclick="deleteFlavorFromProduct('${product.id}', '${flavor.replace(/'/g, "\\'")}')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `
+      : '<p style="color: var(--gray); margin-top: 10px;">Немає варіантів</p>';
+    
+    productCard.innerHTML = `
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">${product.name}</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            ${product.category} • ${product.price.toFixed(2)} zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('${product.id}')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('${product.id}')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      ${flavorsHTML}
+    `;
+    
+    container.appendChild(productCard);
+  });
+}
+
+function openAddProductModal() {
+  if (!isAdminLoggedIn) {
+    showNotification('Будь ласка, увійдіть в адмін-панель');
+    return;
+  }
+  
+  editingProductId = null;
+  document.getElementById('edit-modal-title').textContent = 'Додати новий товар';
+  
+  document.getElementById('edit-product-name').value = '';
+  document.getElementById('edit-product-category').value = 'Жидкості';
+  document.getElementById('edit-product-price').value = '';
+  document.getElementById('edit-product-image').value = '';
+  document.getElementById('edit-product-description').value = '';
+  document.getElementById('edit-flavors-container').innerHTML = '';
+  document.getElementById('new-flavor-input').value = '';
+  
+  document.getElementById('edit-product-modal').classList.add('active');
+}
+
+function openEditProductModal(productId) {
+  if (!isAdminLoggedIn) {
+    showNotification('Будь ласка, увійдіть в адмін-панель');
+    return;
+  }
+  
+  const product = allProducts.find(p => p.id === productId);
+  if (!product) return;
+  
+  editingProductId = productId;
+  document.getElementById('edit-modal-title').textContent = 'Редагувати товар';
+  
+  document.getElementById('edit-product-name').value = product.name;
+  document.getElementById('edit-product-category').value = product.category;
+  document.getElementById('edit-product-price').value = product.price;
+  document.getElementById('edit-product-image').value = product.image;
+  document.getElementById('edit-product-description').value = product.description || '';
+  document.getElementById('new-flavor-input').value = '';
+  
+  renderEditFlavors(product.flavors || []);
+  
+  document.getElementById('edit-product-modal').classList.add('active');
+}
+
+function closeEditProductModal() {
+  document.getElementById('edit-product-modal').classList.remove('active');
+  editingProductId = null;
+}
+
+function renderEditFlavors(flavors) {
+  const container = document.getElementById('edit-flavors-container');
+  container.innerHTML = '';
+  
+  if (flavors.length === 0) {
+    container.innerHTML = '<p style="color: var(--gray);">Немає доданих варіантів</p>';
+    return;
+  }
+  
+  const grid = document.createElement('div');
+  grid.className = 'flavors-grid';
+  
+  flavors.forEach((flavor, index) => {
+    const tag = document.createElement('div');
+    tag.className = 'flavor-tag';
+    tag.innerHTML = `
+      <span>${flavor}</span>
+      <button onclick="removeFlavorFromEdit(${index})">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    grid.appendChild(tag);
+  });
+  
+  container.appendChild(grid);
+}
+
+function addFlavorToEdit() {
+  const input = document.getElementById('new-flavor-input');
+  const flavor = input.value.trim();
+  
+  if (!flavor) {
+    alert('Введіть назву смаку');
+    return;
+  }
+  
+  const container = document.getElementById('edit-flavors-container');
+  const existingFlavors = Array.from(container.querySelectorAll('.flavor-tag span')).map(s => s.textContent);
+  
+  if (existingFlavors.includes(flavor)) {
+    alert('Такий смак вже додано');
+    return;
+  }
+  
+  existingFlavors.push(flavor);
+  renderEditFlavors(existingFlavors);
+  
+  input.value = '';
+}
+
+function removeFlavorFromEdit(index) {
+  const container = document.getElementById('edit-flavors-container');
+  const flavors = Array.from(container.querySelectorAll('.flavor-tag span')).map(s => s.textContent);
+  flavors.splice(index, 1);
+  renderEditFlavors(flavors);
+}
+
+function saveProductChanges() {
+  if (!isAdminLoggedIn) {
+    showNotification('Будь ласка, увійдіть в адмін-панель');
+    return;
+  }
+  
+  const name = document.getElementById('edit-product-name').value.trim();
+  const category = document.getElementById('edit-product-category').value;
+  const price = parseFloat(document.getElementById('edit-product-price').value);
+  const image = document.getElementById('edit-product-image').value.trim();
+  const description = document.getElementById('edit-product-description').value.trim();
+  
+  const container = document.getElementById('edit-flavors-container');
+  const flavors = Array.from(container.querySelectorAll('.flavor-tag span')).map(s => s.textContent);
+  
+  if (!name || !price || !image) {
+    alert('Заповніть обов\'язкові поля: назва, ціна, зображення');
+    return;
+  }
+  
+  const productData = {
+    name,
+    category,
+    price,
+    image,
+    description,
+    flavors
+  };
+  
+  if (editingProductId) {
+    // Обновление существующего товара
+    db.collection("products").doc(editingProductId).update(productData)
+      .then(() => {
+        showSyncNotification('Товар оновлено! Зміни будуть видно всім користувачам.', 'success');
+        closeEditProductModal();
+      })
+      .catch((error) => {
+        console.error("Ошибка обновления товара:", error);
+        showSyncNotification('Помилка оновлення товара', 'error');
+      });
+  } else {
+    // Добавление нового товара
+    const newId = Date.now().toString();
+    productData.id = newId;
+    
+    db.collection("products").doc(newId).set(productData)
+      .then(() => {
+        showSyncNotification('Товар додано! Зміни будуть видно всім користувачам.', 'success');
+        closeEditProductModal();
+      })
+      .catch((error) => {
+        console.error("Ошибка добавления товара:", error);
+        showSyncNotification('Помилка додавання товара', 'error');
+      });
+  }
+}
+
+function deleteProduct(productId) {
+  if (!isAdminLoggedIn) {
+    showNotification('Будь ласка, увійдіть в адмін-панель');
+    return;
+  }
+  
+  if (!confirm('Ви впевнені, що хочете видалити цей товар? Цю дію неможливо скасувати.')) {
+    return;
+  }
+  
+  db.collection("products").doc(productId).delete()
+    .then(() => {
+      showSyncNotification('Товар видалено! Зміни будуть видно всім користувачам.', 'success');
+    })
+    .catch((error) => {
+      console.error("Ошибка удаления товара:", error);
+      showSyncNotification('Помилка видалення товара', 'error');
+    });
+}
+
+function deleteFlavorFromProduct(productId, flavor) {
+  if (!isAdminLoggedIn) {
+    showNotification('Будь ласка, увійдіть в адмін-панель');
+    return;
+  }
+  
+  const product = allProducts.find(p => p.id === productId);
+  if (!product) return;
+  
+  const updatedFlavors = product.flavors.filter(f => f !== flavor);
+  
+  db.collection("products").doc(productId).update({
+    flavors: updatedFlavors
+  })
+  .then(() => {
+    showSyncNotification('Смак видалено!', 'success');
+  })
+  .catch((error) => {
+    console.error("Ошибка удаления вкуса:", error);
+    showSyncNotification('Помилка видалення смаку', 'error');
+  });
 }
 
 // ========== ОТПРАВКА ЗАКАЗА ==========
 function copyOrderToClipboard() {
   if (cart.length === 0) {
-    showNotification('Корзина пуста');
+    showNotification('Кошик порожній');
     return;
   }
   
@@ -1636,38 +2467,38 @@ function copyOrderToClipboard() {
   
   const total = cart.reduce((sum, item) => sum + item.price, 0);
   const orderNumber = 'ORD-' + Date.now().toString().slice(-6);
-  const timestamp = new Date().toLocaleString('ru-RU');
+  const timestamp = new Date().toLocaleString('uk-UA');
   
-  let message = `🛒 *НОВЫЙ ЗАКАЗ НА CLOUDHUB* 🛒\n`;
-  message += `📦 *Номер заказа:* ${orderNumber}\n`;
-  message += `⏰ *Дата и время:* ${timestamp}\n`;
-  message += `🚚 *Способ доставки:* ${selectedDelivery}\n`;
+  let message = `🛒 *НОВЕ ЗАМОВЛЕННЯ НА CLOUDHUB* 🛒\n`;
+  message += `📦 *Номер замовлення:* ${orderNumber}\n`;
+  message += `⏰ *Дата і час:* ${timestamp}\n`;
+  message += `🚚 *Спосіб доставки:* ${selectedDelivery}\n`;
   message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
-  message += `*ТОВАРЫ В ЗАКАЗЕ:*\n`;
+  message += `*ТОВАРИ В ЗАМОВЛЕННІ:*\n`;
   
   cart.forEach((item, index) => {
     message += `${index + 1}. *${item.name}*\n`;
     if (item.flavor) {
-      message += `   🍃 Вариант: ${item.flavor}\n`;
+      message += `   🍃 Варіант: ${item.flavor}\n`;
     }
-    message += `   💰 Цена: ${item.price.toFixed(2)} zł\n`;
-    message += `   📂 Категория: ${item.category}\n`;
+    message += `   💰 Ціна: ${item.price.toFixed(2)} zł\n`;
+    message += `   📂 Категорія: ${item.category}\n`;
     message += `\n`;
   });
   
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `💰 *ИТОГО К ОПЛАТЕ:* ${total.toFixed(2)} zł\n\n`;
+  message += `💰 *РАЗОМ ДО ОПЛАТИ:* ${total.toFixed(2)} zł\n\n`;
   
-  if (selectedDelivery === 'INPOST' && total >= 200) {
-    message += `🚚 *Доставка:* БЕСПЛАТНО (заказ от 135 zł или 3 жиж)\n`;
+  if (selectedDelivery === 'INPOST' && total >= 135) {
+    message += `🚚 *Доставка:* БЕЗКОШТОВНО (замовлення від 135 zł або 3 жиж)\n`;
   } else if (selectedDelivery === 'INPOST') {
-    message += `🚚 *Доставка:* 20 zł (бесплатно от 135 zł или 3 жиж)\n`;
+    message += `🚚 *Доставка:* 20 zł (безкоштовно від 135 zł або 3 жиж)\n`;
   } else {
-    message += `🚚 *Доставка:* Личная встреча (обсудите детали - город: Tychy)\n`;
+    message += `🚚 *Доставка:* Особиста зустріч (обговоріть деталі - місто: Tychy)\n`;
   }
   
   message += `\n👤 *Контакт менеджера:* @managercloudm\n`;
-  message += `📱 *Связь через:* Telegram`;
+  message += `📱 *Зв'язок через:* Telegram`;
   
   try {
     const textArea = document.createElement('textarea');
@@ -1680,8 +2511,8 @@ function copyOrderToClipboard() {
     
     if (successful) {
       showDetailedNotification(
-        '✅ Заказ скопирован в буфер обмена!',
-        `Теперь откройте Telegram, перейдите к менеджеру @managercloudm и вставьте скопированный заказ в чат.\n\nНомер заказа: ${orderNumber}\nСумма: ${total.toFixed(2)} zł\nДоставка: ${selectedDelivery}`,
+        '✅ Замовлення скопійовано в буфер обміну!',
+        `Тепер відкрийте Telegram, перейдіть до менеджера @managercloudm та вставте скопійоване замовлення в чат.\n\nНомер замовлення: ${orderNumber}\nСума: ${total.toFixed(2)} zł\nДоставка: ${selectedDelivery}`,
         'success'
       );
       
@@ -1695,15 +2526,12 @@ function copyOrderToClipboard() {
         updateCartBadge();
         renderCart();
       }, 1000);
-      
-      saveOrderHistory(orderNumber, total, message);
     } else {
-      showNotification('❌ Не удалось скопировать заказ. Попробуйте еще раз.');
+      showNotification('❌ Не вдалося скопіювати замовлення. Спробуйте ще раз.');
     }
   } catch (err) {
-    console.error('Ошибка при копировании:', err);
-    showNotification('❌ Ошибка при копировании. Используйте альтернативный способ.');
-    fallbackCopyOrder(message);
+    console.error('Помилка при копіюванні:', err);
+    showNotification('❌ Помилка при копіюванні.');
   }
 }
 
@@ -1736,19 +2564,15 @@ function showDetailedNotification(title, message, type = 'info') {
     </div>
     <div style="display: flex; gap: 10px; justify-content: center;">
       <button onclick="this.parentElement.parentElement.remove(); openTelegramDirectly()" style="background: white; color: var(--primary); border: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s; flex: 1;">
-        <i class="fab fa-telegram" style="margin-right: 8px;"></i>Открыть Telegram
+        <i class="fab fa-telegram" style="margin-right: 8px;"></i>Відкрити Telegram
       </button>
       <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 12px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-        Закрыть
+        Закрити
       </button>
     </div>
   `;
   
   document.body.appendChild(notification);
-  
-  notification.style.opacity = '0';
-  notification.style.transition = 'opacity 0.3s';
-  setTimeout(() => notification.style.opacity = '1', 10);
   
   setTimeout(() => {
     if (notification.parentElement) {
@@ -1766,102 +2590,34 @@ function openTelegramDirectly() {
   window.open('https://t.me/managercloudm', '_blank');
 }
 
-function fallbackCopyOrder(message) {
-  const modalHTML = `
-    <div id="manual-copy-modal" class="modal-overlay active">
-      <div class="modal-container" style="max-width: 500px;">
-        <div class="modal-header">
-          <div class="modal-title">Скопируйте заказ вручную</div>
-          <button class="modal-close" onclick="closeManualCopyModal()">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        
-        <div class="modal-content">
-          <div style="text-align: center; margin-bottom: 20px;">
-            <i class="fas fa-copy" style="font-size: 40px; color: var(--primary); margin-bottom: 15px;"></i>
-            <h3 style="margin-bottom: 10px;">Заказ готов к отправке</h3>
-            <p style="color: var(--gray); margin-bottom: 20px;">Выделите текст ниже и нажмите Ctrl+C (Cmd+C на Mac)</p>
-          </div>
-          
-          <div style="background: var(--dark); border-radius: 10px; padding: 15px; margin-bottom: 20px; max-height: 300px; overflow-y: auto;">
-            <pre style="white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 14px; color: var(--light); margin: 0;">${message}</pre>
-          </div>
-          
-          <div style="background: rgba(42, 171, 238, 0.1); border-radius: 10px; padding: 15px; margin-bottom: 20px;">
-            <p style="margin-bottom: 10px; color: var(--gray);"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>После копирования:</p>
-            <ol style="padding-left: 20px; color: var(--gray);">
-              <li>Откройте Telegram</li>
-              <li>Найдите менеджера @managercloudm</li>
-              <li>Вставьте заказ в чат (Ctrl+V или Cmd+V)</li>
-              <li>Отправьте сообщение</li>
-            </ol>
-          </div>
-        </div>
-        
-        <div class="modal-footer">
-          <button class="btn-primary" onclick="openTelegramDirectly()">
-            <i class="fab fa-telegram"></i>
-            Открыть Telegram
-          </button>
-          <button class="btn-secondary" onclick="closeManualCopyModal()">
-            Закрыть
-          </button>
-        </div>
-      </div>
-    </div>
+// ========== УТИЛИТЫ И УВЕДОМЛЕНИЯ ==========
+function showSyncNotification(message, type = 'success') {
+  const notification = document.createElement('div');
+  notification.className = 'sync-notification ' + (type === 'error' ? 'error' : '');
+  notification.innerHTML = `
+    <i class="fas ${type === 'success' ? 'fa-sync-alt' : 'fa-exclamation-triangle'}"></i>
+    <span>${message}</span>
   `;
   
-  const modalContainer = document.createElement('div');
-  modalContainer.innerHTML = modalHTML;
-  document.body.appendChild(modalContainer);
+  document.body.appendChild(notification);
   
-  cart = [];
-  saveCart();
-  updateCartBadge();
-  renderCart();
-}
-
-function closeManualCopyModal() {
-  const modal = document.getElementById('manual-copy-modal');
-  if (modal) {
-    modal.classList.remove('active');
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    notification.style.transition = 'opacity 0.5s';
     setTimeout(() => {
-      if (modal.parentElement) {
-        modal.parentElement.removeChild(modal);
+      if (notification.parentElement) {
+        notification.parentElement.removeChild(notification);
       }
-    }, 300);
-  }
+    }, 500);
+  }, 3000);
 }
 
-function saveOrderHistory(orderNumber, total, message) {
-  let orderHistory = JSON.parse(localStorage.getItem('vapeOrderHistory') || '[]');
-  
-  const order = {
-    number: orderNumber,
-    date: new Date().toISOString(),
-    total: total,
-    delivery: selectedDelivery,
-    itemsCount: cart.length,
-    items: [...cart],
-    message: message
-  };
-  
-  orderHistory.unshift(order);
-  
-  if (orderHistory.length > 50) {
-    orderHistory = orderHistory.slice(0, 50);
-  }
-  
-  localStorage.setItem('vapeOrderHistory', JSON.stringify(orderHistory));
-}
-
-// ========== УТИЛИТЫ ==========
 function showNotification(message) {
   const existing = document.querySelector('.notification');
   if (existing) existing.remove();
   
   const notification = document.createElement('div');
+  notification.className = 'notification';
   notification.style.cssText = `
     position: fixed;
     top: 100px;
@@ -1906,16 +2662,43 @@ document.getElementById('delivery-modal').addEventListener('click', function(e) 
   }
 });
 
+document.getElementById('edit-product-modal').addEventListener('click', function(e) {
+  if (e.target.id === 'edit-product-modal') {
+    closeEditProductModal();
+  }
+});
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeFlavorModal();
     closeDeliveryModal();
+    closeEditProductModal();
   }
 });
+
+// Создание администратора по умолчанию
+function createDefaultAdmin() {
+  // Эта функция должна быть вызвана один раз для создания админа
+  // Учетные данные по умолчанию:
+  // Логин: admin
+  // Пароль: CloudHub2024!
+  const email = "admin@cloudhub.com";
+  const password = "CloudHub2024!";
+  
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log("Администратор по умолчанию создан");
+    })
+    .catch((error) => {
+      if (error.code === 'auth/email-already-in-use') {
+        console.log("Администратор уже существует");
+      }
+    });
+}
+
+// Для создания администратора раскомментируйте следующую строку:
+// createDefaultAdmin();
 </script>
 
 </body>
 </html>
-
-
-
