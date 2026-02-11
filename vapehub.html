@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
+<html lang="ru"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CloudHub | Магазин вейп-продукції</title>
@@ -19,17 +17,21 @@
 }
 
 :root {
-  --primary: #8a2be2;
-  --primary-dark: #6a1cb0;
-  --secondary: #ff6b9d;
-  --dark: #0c0c14;
-  --dark-light: #1a1a24;
-  --darker: #07070c;
-  --light: #f0f0f5;
-  --gray: #a0a0b0;
-  --success: #2be28a;
-  --danger: #ff4757;
-  --warning: #ffa502;
+  --primary: #8B0000;           /* Темно-бордовый */
+  --primary-dark: #5A0000;      /* Очень темный бордовый */
+  --primary-light: #A52A2A;     /* Светлый бордовый */
+  --secondary: #D4A5A5;         /* Нежно-розовый */
+  --accent: #FF6B6B;            /* Акцентный красный */
+  --dark: #0D0A0A;              /* Темный фон */
+  --dark-light: #1A1212;        /* Светлее темный */
+  --darker: #080505;            /* Самый темный */
+  --light: #F5F0F0;             /* Светлый текст */
+  --gray: #A08A8A;              /* Серо-бордовый */
+  --success: #4CAF50;           /* Зеленый */
+  --danger: #FF5252;            /* Красный */
+  --warning: #FFA726;           /* Оранжевый */
+  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
 }
 
 body {
@@ -37,6 +39,9 @@ body {
   color: var(--light);
   min-height: 100vh;
   padding-bottom: 80px;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 85% 30%, rgba(139, 0, 0, 0.08) 0%, transparent 20%);
 }
 
 /* ==========================================
@@ -44,7 +49,7 @@ body {
    ========================================== */
 
 header {
-  background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+  
   padding: clamp(12px, 2vw, 16px) clamp(15px, 3vw, 20px);
   display: flex;
   justify-content: space-between;
@@ -52,7 +57,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -60,26 +67,32 @@ header {
   align-items: center;
   gap: clamp(8px, 1.5vw, 10px);
   cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 15px;
+  
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .logo-icon {
-  color: var(--primary);
+  color: var(--secondary);
   font-size: clamp(20px, 4vw, 24px);
+  text-shadow: 0 0 10px rgba(212, 165, 165, 0.3);
 }
 
 .logo-text {
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(18px, 3.5vw, 22px);
-  background: linear-gradient(to right, var(--primary), var(--secondary));
+  background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.currency {
-  font-size: clamp(10px, 2vw, 12px);
-  color: var(--gray);
-  margin-left: 5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
 .header-actions {
@@ -88,25 +101,34 @@ header {
 }
 
 .icon-btn {
-  background: var(--dark-light);
+  background: rgba(255, 255, 255, 0.08);
   width: clamp(36px, 7vw, 40px);
   height: clamp(36px, 7vw, 40px);
-  border-radius: 50%;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .icon-btn:hover {
   background: var(--primary);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(139, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .icon-btn i {
   font-size: clamp(14px, 3vw, 16px);
+  color: var(--secondary);
+}
+
+.icon-btn:hover i {
+  color: white;
 }
 
 /* ==========================================
@@ -123,8 +145,22 @@ header {
   padding: clamp(12px, 2vw, 14px) clamp(15px, 3vw, 20px);
   display: flex;
   align-items: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(138, 43, 226, 0.2);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--dark-light), var(--dark-light)), 
+                    var(--gradient);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: all 0.3s;
+}
+
+.search-box:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(139, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .search-box i {
@@ -195,32 +231,68 @@ header {
 
 .category-card {
   background: var(--dark-light);
-  border-radius: clamp(12px, 2vw, 15px);
-  padding: clamp(12px, 2vw, 15px);
+  border-radius: clamp(15px, 2vw, 20px);
+  padding: clamp(15px, 2vw, 18px);
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  transform: translateY(-100%);
+  transition: transform 0.3s;
 }
 
 .category-card:hover {
-  background: rgba(138, 43, 226, 0.1);
-  transform: translateY(-3px);
+  background: rgba(139, 0, 0, 0.15);
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(139, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(139, 0, 0, 0.15);
+}
+
+.category-card:hover::before {
+  transform: translateY(0);
 }
 
 .category-image {
-  width: clamp(50px, 10vw, 60px);
-  height: clamp(50px, 10vw, 60px);
+  width: clamp(70px, 10vw, 60px);
+  height: clamp(95px, 10vw, 10px);
   object-fit: contain;
   margin-bottom: clamp(8px, 1.5vw, 10px);
-  border-radius: 10px;
+  border-radius: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s;
+}
+
+.category-card:hover .category-image {
+  background: rgba(139, 0, 0, 0.1);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .category-name {
   font-size: clamp(12px, 2.2vw, 14px);
   font-weight: 600;
+  color: var(--secondary);
+  transition: all 0.3s;
+}
+
+.category-card:hover .category-name {
+  color: var(--light);
 }
 
 /* ==========================================
@@ -275,33 +347,80 @@ header {
 
 .product-card {
   background: var(--dark-light);
-  border-radius: clamp(12px, 2vw, 15px);
+  border-radius: clamp(15px, 2vw, 20px);
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.product-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(138, 43, 226, 0.2);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--primary);
+  box-shadow: 
+    0 15px 30px rgba(139, 0, 0, 0.25),
+    0 0 0 1px rgba(139, 0, 0, 0.1);
+}
+
+.product-card:hover::after {
+  opacity: 0.05;
 }
 
 .product-image {
   height: clamp(120px, 20vw, 140px);
-  background: #1a1a24;
+  background: #1a1212;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(10px, 2vw, 15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(139, 0, 0, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.product-card:hover .product-image::before {
+  transform: translateX(100%);
 }
 
 .product-image img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
 }
 
 .product-info {
@@ -309,46 +428,71 @@ header {
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 
 .product-name {
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: clamp(4px, 0.8vw, 5px);
   font-size: clamp(11px, 2vw, 13px);
-  line-height: 1.3;
+  line-height: 1.4;
   min-height: clamp(32px, 5vw, 38px);
+  color: var(--light);
 }
 
 .product-category {
   font-size: clamp(10px, 1.8vw, 12px);
-  color: var(--gray);
+  color: var(--secondary);
   margin-bottom: clamp(6px, 1vw, 8px);
+  font-weight: 500;
 }
 
 .product-price {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary);
   margin-bottom: clamp(10px, 2vw, 15px);
   font-size: clamp(16px, 3vw, 18px);
   margin-top: auto;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn-select {
-  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  background: var(--gradient);
   color: white;
   border: none;
-  padding: clamp(8px, 1.5vw, 10px);
-  border-radius: clamp(10px, 2vw, 14px);
-  font-weight: 600;
+  padding: clamp(10px, 1.8vw, 12px);
+  border-radius: clamp(12px, 2vw, 16px);
+  font-weight: 700;
   font-size: clamp(12px, 2.2vw, 14px);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.btn-select::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .btn-select:hover {
-  background: linear-gradient(to right, var(--primary-dark), var(--primary));
-  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+  background: var(--gradient-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 0, 0, 0.4);
+}
+
+.btn-select:hover::before {
+  left: 100%;
 }
 
 /* ==========================================
@@ -361,7 +505,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 15, 0.95);
+  background: rgba(13, 10, 10, 0.98);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,7 +513,8 @@ header {
   padding: clamp(15px, 3vw, 20px);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
+  transition: all 0.3s ease-out;
+  backdrop-filter: blur(10px);
 }
 
 .modal-overlay.active {
@@ -379,19 +524,23 @@ header {
 
 .modal-container {
   background: var(--dark-light);
-  border-radius: clamp(15px, 2.5vw, 20px);
+  border-radius: clamp(20px, 2.5vw, 25px);
   width: 100%;
   max-width: min(600px, 95vw);
   max-height: 85vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-  transform: translateY(20px);
-  transition: all 0.3s;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(139, 0, 0, 0.2);
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
 .modal-overlay.active .modal-container {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .modal-header {
@@ -400,37 +549,41 @@ header {
   align-items: center;
   padding: clamp(15px, 3vw, 20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(to right, rgba(139, 0, 0, 0.2), transparent);
 }
 
 .modal-title {
   font-size: clamp(18px, 3.5vw, 22px);
-  font-weight: 700;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
+  font-weight: 800;
+  background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.3;
   padding-right: 10px;
+  letter-spacing: 0.5px;
 }
 
 .modal-close {
-  background: var(--dark);
-  color: var(--gray);
-  border: none;
+  background: rgba(139, 0, 0, 0.2);
+  color: var(--secondary);
+  border: 1px solid rgba(139, 0, 0, 0.3);
   width: clamp(36px, 7vw, 40px);
   height: clamp(36px, 7vw, 40px);
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
 }
 
 .modal-close:hover {
   background: var(--danger);
   color: white;
+  transform: rotate(90deg);
+  box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
 }
 
 .modal-content {
@@ -451,38 +604,59 @@ header {
 }
 
 .delivery-option {
-  background: var(--dark);
-  border-radius: clamp(12px, 2vw, 15px);
+  background: rgba(139, 0, 0, 0.08);
+  border-radius: clamp(15px, 2vw, 18px);
   padding: clamp(15px, 2.5vw, 20px);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 2px solid transparent;
   display: flex;
   align-items: center;
   gap: clamp(12px, 2vw, 15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.delivery-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient);
+  transform: translateX(-100%);
+  transition: transform 0.3s;
 }
 
 .delivery-option:hover {
-  background: rgba(138, 43, 226, 0.1);
-  border-color: rgba(138, 43, 226, 0.3);
+  background: rgba(139, 0, 0, 0.15);
+  border-color: rgba(139, 0, 0, 0.4);
+  transform: translateX(5px);
+}
+
+.delivery-option:hover::before {
+  transform: translateX(0);
 }
 
 .delivery-option.selected {
-  background: rgba(138, 43, 226, 0.15);
+  background: rgba(139, 0, 0, 0.2);
   border-color: var(--primary);
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
 }
 
 .delivery-icon {
   width: clamp(45px, 8vw, 50px);
   height: clamp(45px, 8vw, 50px);
-  background: var(--primary);
-  border-radius: 12px;
+  background: var(--gradient);
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: clamp(20px, 4vw, 24px);
   color: white;
   flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
 }
 
 .delivery-info {
@@ -491,13 +665,14 @@ header {
 }
 
 .delivery-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: clamp(16px, 3vw, 18px);
   margin-bottom: clamp(4px, 0.8vw, 5px);
+  color: var(--light);
 }
 
 .delivery-desc {
-  color: var(--gray);
+  color: var(--secondary);
   font-size: clamp(12px, 2.2vw, 14px);
   line-height: 1.4;
 }
@@ -507,10 +682,12 @@ header {
   font-size: clamp(18px, 3.5vw, 20px);
   opacity: 0;
   flex-shrink: 0;
+  transition: all 0.3s;
 }
 
 .delivery-option.selected .delivery-check {
   opacity: 1;
+  transform: scale(1.2);
 }
 
 /* ==========================================
@@ -518,23 +695,26 @@ header {
    ========================================== */
 
 .multi-select-info {
-  background: rgba(138, 43, 226, 0.1);
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 15px;
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.15), rgba(165, 42, 42, 0.15));
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
   text-align: center;
-  border: 1px solid rgba(138, 43, 226, 0.3);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .multi-select-info i {
   color: var(--primary);
   margin-right: 8px;
+  font-size: 18px;
 }
 
 .selected-count {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary);
-  font-size: 18px;
+  font-size: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .flavor-list {
@@ -555,26 +735,49 @@ header {
 }
 
 .flavor-item {
-  background: var(--dark);
-  border-radius: clamp(10px, 1.5vw, 12px);
+  background: rgba(139, 0, 0, 0.08);
+  border-radius: clamp(12px, 1.5vw, 15px);
   padding: clamp(12px, 2vw, 15px);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 2px solid transparent;
   position: relative;
   min-height: clamp(44px, 8vw, 52px);
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+.flavor-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .flavor-item:hover {
-  background: rgba(138, 43, 226, 0.1);
-  border-color: rgba(138, 43, 226, 0.3);
+  background: rgba(139, 0, 0, 0.15);
+  border-color: rgba(139, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.flavor-item:hover::before {
+  opacity: 0.1;
 }
 
 .flavor-item.selected {
-  background: rgba(138, 43, 226, 0.15);
+  background: rgba(139, 0, 0, 0.2);
   border-color: var(--primary);
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
+}
+
+.flavor-item.selected::before {
+  opacity: 0.15;
 }
 
 .flavor-name {
@@ -582,6 +785,9 @@ header {
   font-size: clamp(14px, 2.5vw, 16px);
   padding-right: 30px;
   line-height: 1.3;
+  position: relative;
+  z-index: 1;
+  color: var(--light);
 }
 
 .flavor-check {
@@ -592,10 +798,13 @@ header {
   color: var(--primary);
   font-size: clamp(16px, 3vw, 18px);
   opacity: 0;
+  transition: all 0.3s;
+  z-index: 1;
 }
 
 .flavor-item.selected .flavor-check {
   opacity: 1;
+  transform: translateY(-50%) scale(1.2);
 }
 
 .modal-footer {
@@ -604,6 +813,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: clamp(8px, 1.5vw, 10px);
+  background: linear-gradient(to top, rgba(139, 0, 0, 0.1), transparent);
 }
 
 @media (min-width: 641px) {
@@ -617,59 +827,85 @@ header {
 }
 
 .btn-primary {
-  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  background: var(--gradient);
   color: white;
   border: none;
   padding: clamp(12px, 2vw, 14px);
-  border-radius: clamp(10px, 1.5vw, 12px);
-  font-weight: 600;
+  border-radius: clamp(12px, 1.5vw, 15px);
+  font-weight: 700;
   font-size: clamp(14px, 2.5vw, 16px);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: clamp(8px, 1.5vw, 10px);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
+  background: var(--gradient-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--gray);
-  border: 1px solid var(--gray);
+  color: var(--secondary);
+  border: 2px solid rgba(139, 0, 0, 0.3);
   padding: clamp(12px, 2vw, 14px);
-  border-radius: clamp(10px, 1.5vw, 12px);
+  border-radius: clamp(12px, 1.5vw, 15px);
   font-weight: 600;
   font-size: clamp(14px, 2.5vw, 16px);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary:hover {
+  background: rgba(139, 0, 0, 0.1);
   color: var(--light);
-  border-color: var(--light);
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
 /* ==========================================
-   НИЖНЯЯ НАВИГАЦИЯ - АДАПТИВНАЯ
+   НИЖНЯЯ НАВИГАЦИЯ - ПРЕМИУМ
    ========================================== */
 
 .nav-footer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--darker);
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
   display: flex;
   justify-content: space-around;
-  padding: clamp(12px, 2vw, 15px) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  width: calc(100% - 40px);
+  max-width: 500px;
 }
 
 .nav-item {
@@ -678,39 +914,51 @@ header {
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
-  padding: clamp(4px, 0.8vw, 5px) clamp(12px, 2vw, 15px);
-  border-radius: 12px;
+  padding: 12px 20px;
+  border-radius: 16px;
   position: relative;
+  min-width: 80px;
 }
 
 .nav-item i {
-  font-size: clamp(18px, 3.5vw, 20px);
-  margin-bottom: clamp(3px, 0.6vw, 4px);
+  font-size: 22px;
+  margin-bottom: 6px;
+  transition: all 0.3s;
 }
 
 .nav-item span {
-  font-size: clamp(10px, 2vw, 12px);
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s;
 }
 
 .nav-item.active {
-  color: var(--primary);
-  background: rgba(138, 43, 226, 0.1);
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
+  transform: translateY(-5px);
 }
 
-.cart-badge {
-  position: absolute;
-  top: -2px;
-  right: clamp(3px, 0.8vw, 5px);
-  background: var(--secondary);
+.nav-item.active i,
+.nav-item.active span {
   color: white;
-  font-size: clamp(9px, 1.8vw, 10px);
-  width: clamp(16px, 3vw, 18px);
-  height: clamp(16px, 3vw, 18px);
+}
+
+.cart-badge-nav {
+  position: absolute;
+  top: 0px;
+  right: 9px;
+  background: red;
+  color: #ffffff;
+  font-size: 11px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 800;
+  border: 2px solid rgb(255 16 16 / 95%);
 }
 
 /* ==========================================
@@ -730,10 +978,21 @@ header {
   color: var(--primary);
   font-weight: 600;
   font-size: clamp(14px, 2.5vw, 16px);
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  color: var(--accent);
+  transform: translateX(-5px);
 }
 
 .back-btn i {
   font-size: clamp(16px, 3vw, 18px);
+  transition: transform 0.3s;
+}
+
+.back-btn:hover i {
+  transform: translateX(-3px);
 }
 
 .cart-items {
@@ -744,13 +1003,21 @@ header {
 
 .cart-item {
   background: var(--dark-light);
-  border-radius: clamp(12px, 2vw, 15px);
+  border-radius: clamp(15px, 2vw, 20px);
   padding: clamp(12px, 2vw, 15px);
   margin-bottom: clamp(12px, 2vw, 15px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: clamp(10px, 2vw, 15px);
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cart-item:hover {
+  background: rgba(139, 0, 0, 0.1);
+  border-color: rgba(139, 0, 0, 0.3);
+  transform: translateX(5px);
 }
 
 .cart-item-info {
@@ -762,22 +1029,24 @@ header {
   font-weight: 600;
   margin-bottom: clamp(3px, 0.6vw, 5px);
   font-size: clamp(13px, 2.5vw, 15px);
+  color: var(--light);
 }
 
 .cart-item-flavor {
   font-size: clamp(11px, 2vw, 12px);
-  color: var(--gray);
+  color: var(--secondary);
   margin-bottom: clamp(3px, 0.6vw, 5px);
 }
 
 .cart-item-price {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary);
   font-size: clamp(15px, 3vw, 17px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn-remove {
-  background: var(--danger);
+  background: var(--gradient);
   color: white;
   border: none;
   width: clamp(32px, 6vw, 36px);
@@ -787,75 +1056,99 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
 }
 
 .btn-remove:hover {
-  background: #ff2e43;
-  transform: scale(1.1);
+  background: var(--danger);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
 }
 
 .cart-summary {
   background: var(--dark-light);
-  border-radius: clamp(15px, 2.5vw, 20px);
+  border-radius: clamp(20px, 2.5vw, 25px);
   padding: clamp(15px, 3vw, 20px);
   margin: clamp(15px, 3vw, 20px);
   margin-top: clamp(25px, 4vw, 30px);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .cart-total {
   display: flex;
   justify-content: space-between;
   font-size: clamp(16px, 3vw, 18px);
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: clamp(15px, 3vw, 20px);
   padding-bottom: clamp(12px, 2vw, 15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--light);
 }
 
 .cart-total-amount {
   color: var(--primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .telegram-payment {
-  background: #2aabee;
+  background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
   color: white;
   border: none;
   padding: clamp(14px, 2.5vw, 16px);
-  border-radius: clamp(10px, 1.5vw, 12px);
-  font-weight: 600;
+  border-radius: clamp(12px, 1.5vw, 15px);
+  font-weight: 700;
   font-size: clamp(14px, 2.5vw, 16px);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: clamp(8px, 1.5vw, 10px);
   width: 100%;
   margin-top: clamp(8px, 1.5vw, 10px);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.telegram-payment::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .telegram-payment:hover {
-  background: #229ed9;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(42, 171, 238, 0.3);
+  background: linear-gradient(135deg, #229ED9 0%, #1E8CC4 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(42, 171, 238, 0.4);
+}
+
+.telegram-payment:hover::before {
+  left: 100%;
 }
 
 .payment-info {
   margin-top: clamp(15px, 3vw, 20px);
   padding: clamp(12px, 2vw, 15px);
   background: rgba(42, 171, 238, 0.1);
-  border-radius: clamp(10px, 1.5vw, 12px);
+  border-radius: clamp(12px, 1.5vw, 15px);
   text-align: center;
+  border: 1px solid rgba(42, 171, 238, 0.2);
 }
 
 .payment-info p {
   margin-bottom: clamp(8px, 1.5vw, 10px);
-  color: var(--gray);
+  color: #ffffff;
   font-size: clamp(12px, 2.2vw, 14px);
   line-height: 1.5;
 }
@@ -863,13 +1156,15 @@ header {
 .telegram-username {
   background: var(--dark);
   padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 15px);
-  border-radius: 10px;
+  border-radius: 12px;
   font-family: monospace;
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 800;
   display: inline-block;
   margin: clamp(8px, 1.5vw, 10px) 0;
   font-size: clamp(13px, 2.5vw, 15px);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
 }
 
 .empty-state {
@@ -879,7 +1174,7 @@ header {
 
 .empty-state i {
   font-size: clamp(50px, 10vw, 60px);
-  color: var(--gray);
+  color: var(--secondary);
   margin-bottom: clamp(15px, 3vw, 20px);
   opacity: 0.5;
 }
@@ -891,7 +1186,7 @@ header {
 }
 
 .empty-state p {
-  color: var(--gray);
+  color: var(--secondary);
   margin-bottom: clamp(15px, 3vw, 20px);
   font-size: clamp(14px, 2.5vw, 16px);
 }
@@ -911,18 +1206,26 @@ header {
   max-width: 400px;
   margin: 100px auto;
   background: var(--dark-light);
-  border-radius: 20px;
+  border-radius: 25px;
   padding: 30px;
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(139, 0, 0, 0.2);
 }
 
 .login-container h2 {
-  color: var(--primary);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  font-size: 24px;
 }
 
 .login-input-group {
@@ -933,15 +1236,15 @@ header {
 .login-input-group label {
   display: block;
   margin-bottom: 8px;
-  color: var(--gray);
+  color: var(--secondary);
   font-weight: 600;
 }
 
 .login-input-group input {
   width: 100%;
   padding: 15px;
-  background: var(--dark);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(139, 0, 0, 0.1);
+  border: 1px solid rgba(139, 0, 0, 0.3);
   border-radius: 12px;
   color: var(--light);
   font-size: 16px;
@@ -951,23 +1254,27 @@ header {
 
 .login-input-group input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+  background: rgba(139, 0, 0, 0.15);
 }
 
 .login-error {
   color: var(--danger);
   margin-top: 15px;
   padding: 10px;
-  background: rgba(255, 71, 87, 0.1);
+  background: rgba(255, 82, 82, 0.1);
   border-radius: 10px;
   display: none;
+  border: 1px solid rgba(255, 82, 82, 0.2);
 }
 
 .admin-section {
   background: var(--dark-light);
-  border-radius: 15px;
+  border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .admin-section h2 {
@@ -976,6 +1283,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 22px;
 }
 
 .admin-header {
@@ -991,15 +1299,19 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--gray);
+  color: var(--secondary);
+  background: rgba(139, 0, 0, 0.1);
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(139, 0, 0, 0.2);
 }
 
 .btn-logout {
-  background: var(--danger);
+  background: var(--gradient);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1009,8 +1321,9 @@ header {
 }
 
 .btn-logout:hover {
-  background: #ff2e43;
+  background: var(--gradient-dark);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
 }
 
 .products-list {
@@ -1019,10 +1332,17 @@ header {
 }
 
 .admin-product-card {
-  background: var(--dark);
-  border-radius: 12px;
+  background: rgba(139, 0, 0, 0.08);
+  border-radius: 15px;
   padding: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(139, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.admin-product-card:hover {
+  background: rgba(139, 0, 0, 0.12);
+  border-color: var(--primary);
+  transform: translateY(-3px);
 }
 
 .admin-product-header {
@@ -1047,16 +1367,17 @@ header {
 }
 
 .btn-admin {
-  padding: 8px 15px;
-  border-radius: 8px;
+  padding: 10px 15px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-edit {
@@ -1065,7 +1386,9 @@ header {
 }
 
 .btn-edit:hover {
-  background: #ff8800;
+  background: #FF9800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 167, 38, 0.3);
 }
 
 .btn-delete {
@@ -1074,7 +1397,9 @@ header {
 }
 
 .btn-delete:hover {
-  background: #ff2e43;
+  background: #FF4040;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 82, 82, 0.3);
 }
 
 .btn-add {
@@ -1083,7 +1408,9 @@ header {
 }
 
 .btn-add:hover {
-  background: #24c77a;
+  background: #43A047;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
 }
 
 .flavors-grid {
@@ -1094,13 +1421,14 @@ header {
 }
 
 .flavor-tag {
-  background: rgba(138, 43, 226, 0.2);
-  padding: 8px 12px;
-  border-radius: 8px;
+  background: rgba(139, 0, 0, 0.2);
+  padding: 10px 12px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
+  border: 1px solid rgba(139, 0, 0, 0.3);
 }
 
 .flavor-tag button {
@@ -1119,7 +1447,7 @@ header {
 }
 
 .flavor-tag button:hover {
-  background: #ff2e43;
+  background: #FF4040;
   transform: scale(1.1);
 }
 
@@ -1131,7 +1459,7 @@ header {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: var(--gray);
+  color: var(--secondary);
 }
 
 .form-group input,
@@ -1139,8 +1467,8 @@ header {
 .form-group select {
   width: 100%;
   padding: 12px;
-  background: var(--dark);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(139, 0, 0, 0.1);
+  border: 1px solid rgba(139, 0, 0, 0.3);
   border-radius: 10px;
   color: var(--light);
   font-size: 14px;
@@ -1151,6 +1479,7 @@ header {
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
 }
 
 .form-group textarea {
@@ -1166,6 +1495,11 @@ header {
 
 .add-flavor-container input {
   flex: 1;
+  background: rgba(139, 0, 0, 0.1);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--light);
 }
 
 /* Уведомления о синхронизации */
@@ -1173,16 +1507,17 @@ header {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: var(--success);
+  background: var(--gradient);
   color: white;
   padding: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   gap: 10px;
   z-index: 10000;
   animation: slideIn 0.3s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sync-notification.error {
@@ -1202,21 +1537,21 @@ header {
 
 /* Скроллбар для модальных окон */
 .modal-content::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .modal-content::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(139, 0, 0, 0.1);
   border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--gradient);
   border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--gradient-dark);
 }
 
 /* Анимации */
@@ -1243,6 +1578,57 @@ header {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Дополнительные улучшения */
+::-webkit-selection {
+  background: rgba(139, 0, 0, 0.5);
+  color: white;
+}
+
+::selection {
+  background: rgba(139, 0, 0, 0.5);
+  color: white;
+}
+
+/* Плавный скролл */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Эффект параллакса для контента */
+@media (min-width: 768px) {
+  .product-card:hover .product-image {
+    transform: translateY(-5px);
+  }
+}
+
+/* Улучшенные тени и глубины */
+.shadow-elegant {
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 6px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Градиентные обводки */
+.gradient-border {
+  position: relative;
+  border-radius: 20px;
+  padding: 3px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0.5;
+}
 </style>
 </head>
 <body>
@@ -1261,7 +1647,7 @@ header {
     </div>
     <div class="icon-btn" onclick="openCartPage()">
       <i class="fas fa-shopping-cart"></i>
-      <div class="cart-badge" id="header-cart-badge">0</div>
+      <div class="cart-badge" id="header-cart-badge">1</div>
     </div>
   </div>
 </header>
@@ -1298,9 +1684,87 @@ header {
       </div>
     </div>
     
-    <div class="products-grid" id="products-container">
-      <!-- Товары будут загружены через JavaScript -->
-    </div>
+    <div class="products-grid" id="products-container"><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/vEq09Ta.png" alt="Elfliq 30ml 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Elfliq 30ml 5%</div>
+        <div class="product-category">Жидкості</div>
+        <div class="product-price">45.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('1')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/IeTuHXS.png" alt="Chaser Lux 30ml 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Chaser Lux 30ml 5%</div>
+        <div class="product-category">Жидкості</div>
+        <div class="product-price">50.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('2')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/Z0dIMUY.png" alt="Chaser Lux 30ml 6%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Chaser Lux 30ml 6%</div>
+        <div class="product-category">Жидкості</div>
+        <div class="product-price">50.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('3')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/n8NuNv9.png" alt="Chaser for pods 30ml 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Chaser for pods 30ml 5%</div>
+        <div class="product-category">Жидкості</div>
+        <div class="product-price">50.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('4')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/4LDRirY.png" alt="CHASER LIMITINI EDITINI 30ML 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">CHASER LIMITINI EDITINI 30ML 5%</div>
+        <div class="product-category">Жидкості</div>
+        <div class="product-price">50.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('5')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/xhr3S0G.png" alt="ELFBAR RAYA D3 - 25.000 PUFFS" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">ELFBAR RAYA D3 - 25.000 PUFFS</div>
+        <div class="product-category">Одноразки</div>
+        <div class="product-price">80.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('6')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/PW1Pqyz.png" alt="VAPORESSO XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">VAPORESSO XROS 5 MINI</div>
+        <div class="product-category">Поды</div>
+        <div class="product-price">120.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('7')">Вибрати колір</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/gvDaEyg.png" alt="Катридж XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Катридж XROS 5 MINI</div>
+        <div class="product-category">Картриджі</div>
+        <div class="product-price">25.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('8')">Вибрати Ω</button>
+      </div>
+    </div></div>
   </div>
   
   <!-- Страница корзины -->
@@ -1322,7 +1786,7 @@ header {
   <!-- Админ-панель (только после авторизации) -->
   <div id="admin-page" class="admin-page">
     <!-- Форма авторизации -->
-    <div id="login-form" class="login-container">
+    <div id="login-form" class="login-container" style="display: none;">
       <h2><i class="fas fa-lock"></i> Вхід в адмін-панель</h2>
       <div class="login-input-group">
         <label>Логін</label>
@@ -1341,13 +1805,13 @@ header {
     </div>
 
     <!-- Панель управления (после входа) -->
-    <div id="admin-panel" style="display: none;">
+    <div id="admin-panel" style="display: block;">
       <div class="admin-header">
         <div>
           <h2><i class="fas fa-box"></i> Управління товарами</h2>
           <div class="admin-user-info">
             <i class="fas fa-user"></i>
-            <span id="current-user">Адмін</span>
+            <span id="current-user">admin_maks</span>
           </div>
         </div>
         <div>
@@ -1360,14 +1824,753 @@ header {
         </div>
       </div>
       
-      <div class="products-list" id="admin-products-list">
-        <!-- Список товаров для редактирования -->
+      <div class="products-list" id="admin-products-list"><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">Elfliq 30ml 5%</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Жидкості • 45.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('1')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('1')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
       </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (34):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>Apple Pear</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Apple Pear')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blackberry Lemon</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blackberry Lemon')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blackcurrant aniseed</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blackcurrant aniseed')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blueberry</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blueberry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blueberry Raspberry Pomegranate</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blueberry Raspberry Pomegranate')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blueberry Rose Mint</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blueberry Rose Mint')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blueberry Sour Raspberry</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blueberry Sour Raspberry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blue Razz Ice</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blue Razz Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blue Razz Lemonade</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blue Razz Lemonade')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Cherry</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Cherry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Cherry Cola</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Cherry Cola')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Cherry Lemon Peach</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Cherry Lemon Peach')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Cola</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Cola')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Cool Mint</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Cool Mint')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Double Apple</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Double Apple')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Watermelon Cherry</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Watermelon Cherry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Cherry Lemon</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Cherry Lemon')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Apple Peach</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Apple Peach')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blackcurrant Aniseed</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Blackcurrant Aniseed')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Pink Lemonade Soda</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Pink Lemonade Soda')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Elf Jack</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Elf Jack')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Grape</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Grape')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>P&amp;B Cloudd</span>
+                <button onclick="deleteFlavorFromProduct('1', 'P&amp;B Cloudd')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Pina Colada</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Pina Colada')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Pink Grapefruit</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Pink Grapefruit')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Pink Lemonade</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Pink Lemonade')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Sour Apple</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Sour Apple')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Ice</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Kiwi</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Kiwi')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Raspberry Cherry Ice</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Raspberry Cherry Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Snoow</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Snoow')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Rhubarb Snoow</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Rhubarb Snoow')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Peach Ice</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Peach Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Spearmint</span>
+                <button onclick="deleteFlavorFromProduct('1', 'Spearmint')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">Chaser Lux 30ml 5%</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Жидкості • 50.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('2')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('2')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (7):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>Tropic Punch Orange</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Tropic Punch Orange')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Coconut Melon</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Coconut Melon')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Vitamine</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Vitamine')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Kiwi Passionfruit Guava</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Kiwi Passionfruit Guava')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blueberry Raspberry</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Blueberry Raspberry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Sangria</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Sangria')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Turbo mint</span>
+                <button onclick="deleteFlavorFromProduct('2', 'Turbo mint')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">Chaser Lux 30ml 6%</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Жидкості • 50.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('3')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('3')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (8):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>Sour Apple</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Sour Apple')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blackberry Lemonade</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Blackberry Lemonade')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Sour Watermelon Candy</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Sour Watermelon Candy')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Peach Yogurt</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Peach Yogurt')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blueberry Raspberry</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Blueberry Raspberry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Grape Mint</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Grape Mint')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Watermelon Raspberry</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Watermelon Raspberry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Peach Tea</span>
+                <button onclick="deleteFlavorFromProduct('3', 'Peach Tea')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">Chaser for pods 30ml 5%</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Жидкості • 50.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('4')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('4')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (9):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>Ягоди</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Ягоди')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Блакитна малина</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Блакитна малина')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>М'ята</span>
+                <button onclick="deleteFlavorFromProduct('4', 'М\'ята')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Персик</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Персик')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Полуниця</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Полуниця')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Кавун</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Кавун')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Диня</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Диня')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Грейпфрут</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Грейпфрут')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Жовта малина</span>
+                <button onclick="deleteFlavorFromProduct('4', 'Жовта малина')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">CHASER LIMITINI EDITINI 30ML 5%</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Жидкості • 50.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('5')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('5')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (6):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>ALOE MINT</span>
+                <button onclick="deleteFlavorFromProduct('5', 'ALOE MINT')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>JASMINE PEACH</span>
+                <button onclick="deleteFlavorFromProduct('5', 'JASMINE PEACH')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>PINEAPPLE PASSION LIME</span>
+                <button onclick="deleteFlavorFromProduct('5', 'PINEAPPLE PASSION LIME')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>BALERRINA CAPPUCCINO</span>
+                <button onclick="deleteFlavorFromProduct('5', 'BALERRINA CAPPUCCINO')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>GLORBO FRUTTODRILLO</span>
+                <button onclick="deleteFlavorFromProduct('5', 'GLORBO FRUTTODRILLO')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>TUNG TUNG TUNG SAHUR</span>
+                <button onclick="deleteFlavorFromProduct('5', 'TUNG TUNG TUNG SAHUR')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">ELFBAR RAYA D3 - 25.000 PUFFS</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Одноразки • 80.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('6')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('6')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (8):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>Blueberry Ice</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Blueberry Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Grape</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Strawberry Grape')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blackberry Cranberry</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Blackberry Cranberry')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Watermelon Ice</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Watermelon Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Watermelon</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Strawberry Watermelon')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Peach Ice</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Peach Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Strawberry Ice</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Strawberry Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>Blue Razz Ice</span>
+                <button onclick="deleteFlavorFromProduct('6', 'Blue Razz Ice')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">VAPORESSO XROS 5 MINI</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Поды • 120.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('7')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('7')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (1):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>Немає в наявності</span>
+                <button onclick="deleteFlavorFromProduct('7', 'Немає в наявності')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div><div class="admin-product-card">
+      <div class="admin-product-header">
+        <div>
+          <div class="admin-product-title">Катридж XROS 5 MINI</div>
+          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
+            Картриджі • 25.00 zł
+          </div>
+        </div>
+        <div class="admin-product-actions">
+          <button class="btn-admin btn-edit" onclick="openEditProductModal('8')">
+            <i class="fas fa-edit"></i>
+            Редагувати
+          </button>
+          <button class="btn-admin btn-delete" onclick="deleteProduct('8')">
+            <i class="fas fa-trash"></i>
+            Видалити
+          </button>
+        </div>
+      </div>
+      
+        <div style="margin-top: 15px;">
+          <strong style="color: var(--gray);">Смаки/Варіанти (2):</strong>
+          <div class="flavors-grid">
+            
+              <div class="flavor-tag">
+                <span>3ml 0.4Ω</span>
+                <button onclick="deleteFlavorFromProduct('8', '3ml 0.4Ω')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+              <div class="flavor-tag">
+                <span>2ml 0.6Ω</span>
+                <button onclick="deleteFlavorFromProduct('8', '2ml 0.6Ω')">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            
+          </div>
+        </div>
+      
+    </div></div>
     </div>
   </div>
 </main>
 
-<!-- Нижняя навигация -->
+<!-- Исправленная нижняя навигация -->
 <div class="nav-footer">
   <div class="nav-item active" onclick="goToHome()">
     <i class="fas fa-store"></i>
@@ -1377,7 +2580,7 @@ header {
   <div class="nav-item" onclick="openCartPage()">
     <i class="fas fa-shopping-cart"></i>
     <span>Кошик</span>
-    <div class="cart-badge" id="cart-badge">0</div>
+    <div class="cart-badge-nav" id="cart-badge">1</div>
   </div>
   
   <div class="nav-item" onclick="openAdminPage()">
@@ -1385,7 +2588,6 @@ header {
     <span>Адмін</span>
   </div>
 </div>
-
 <!-- Модальное окно выбора вкуса (с множественным выбором) -->
 <div id="flavor-modal" class="modal-overlay">
   <div class="modal-container">
@@ -1458,7 +2660,7 @@ header {
         </div>
       </div>
       
-      <div style="margin-top: 20px; padding: 15px; background: rgba(138, 43, 226, 0.1); border-radius: 12px;">
+     <div style="margin-top: 20px;padding: 15px;background: #5a00001f;border-radius: 12px;">
         <p style="color: var(--gray); font-size: 14px; margin-bottom: 10px;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i>Після вибору способу доставки замовлення буде скопійовано в буфер обміну та відкриється Telegram для зв'язку з менеджером.</p>
       </div>
     </div>
@@ -1489,12 +2691,12 @@ header {
       <form id="edit-product-form">
         <div class="form-group">
           <label>Назва товару</label>
-          <input type="text" id="edit-product-name" required>
+          <input type="text" id="edit-product-name" required="">
         </div>
         
         <div class="form-group">
           <label>Категорія</label>
-          <select id="edit-product-category" required>
+          <select id="edit-product-category" required="">
             <option value="Жидкості">Жидкості</option>
             <option value="Одноразки">Одноразки</option>
             <option value="Поды">Поды</option>
@@ -1504,12 +2706,12 @@ header {
         
         <div class="form-group">
           <label>Ціна (zł)</label>
-          <input type="number" id="edit-product-price" step="0.01" required>
+          <input type="number" id="edit-product-price" step="0.01" required="">
         </div>
         
         <div class="form-group">
           <label>URL зображення</label>
-          <input type="url" id="edit-product-image" required>
+          <input type="url" id="edit-product-image" required="">
         </div>
         
         <div class="form-group">
@@ -2700,5 +3902,5 @@ function createDefaultAdmin() {
 // createDefaultAdmin();
 </script>
 
-</body>
-</html>
+
+</body></html>
