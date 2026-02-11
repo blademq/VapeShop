@@ -1647,7 +1647,7 @@ html {
     </div>
     <div class="icon-btn" onclick="openCartPage()">
       <i class="fas fa-shopping-cart"></i>
-      <div class="cart-badge" id="header-cart-badge">1</div>
+      <div class="cart-badge" id="header-cart-badge">0</div>
     </div>
   </div>
 </header>
@@ -1734,6 +1734,36 @@ html {
         <div class="product-price">50.00 zł</div>
         <button class="btn-select" onclick="openFlavorModal('5')">Вибрати смак</button>
       </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/xhr3S0G.png" alt="ELFBAR RAYA D3 - 25.000 PUFFS" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">ELFBAR RAYA D3 - 25.000 PUFFS</div>
+        <div class="product-category">Одноразки</div>
+        <div class="product-price">80.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('6')">Вибрати смак</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/PW1Pqyz.png" alt="VAPORESSO XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">VAPORESSO XROS 5 MINI</div>
+        <div class="product-category">POD-системы</div>
+        <div class="product-price">120.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('7')">Вибрати колiр</button>
+      </div>
+    </div><div class="product-card">
+      <div class="product-image">
+        <img src="https://i.imgur.com/gvDaEyg.png" alt="Катридж XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Катридж XROS 5 MINI</div>
+        <div class="product-category">Картриджі</div>
+        <div class="product-price">25.00 zł</div>
+        <button class="btn-select" onclick="openFlavorModal('8')">Вибрати Ω</button>
+      </div>
     </div></div>
   </div>
   
@@ -1756,7 +1786,7 @@ html {
   <!-- Админ-панель (только после авторизации) -->
   <div id="admin-page" class="admin-page" style="display: none;">
     <!-- Форма авторизации -->
-    <div id="login-form" class="login-container" style="display: none;">
+    <div id="login-form" class="login-container" style="display: block;">
       <h2><i class="fas fa-lock"></i> Вхід в адмін-панель</h2>
       <div class="login-input-group">
         <label>Логін</label>
@@ -1775,7 +1805,7 @@ html {
     </div>
 
     <!-- Панель управления (после входа) -->
-    <div id="admin-panel" style="display: block;">
+    <div id="admin-panel" style="display: none;">
       <div class="admin-header">
         <div>
           <h2><i class="fas fa-box"></i> Управління товарами</h2>
@@ -2550,7 +2580,7 @@ html {
   <div class="nav-item" onclick="openCartPage()">
     <i class="fas fa-shopping-cart"></i>
     <span>Кошик</span>
-    <div class="cart-badge-nav" id="cart-badge">1</div>
+    <div class="cart-badge-nav" id="cart-badge">0</div>
   </div>
   
   <div class="nav-item" onclick="openAdminPage()">
@@ -2562,7 +2592,7 @@ html {
 <div id="flavor-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">Виберіть смак</div>
+      <div class="modal-title" id="modal-title">Виберіть колір</div>
       <button class="modal-close" onclick="closeFlavorModal()">
         <i class="fas fa-times"></i>
       </button>
@@ -2669,7 +2699,7 @@ html {
           <select id="edit-product-category" required="">
             <option value="Жидкості">Рідини</option>
             <option value="Одноразки">Одноразки</option>
-            <option value="POD-система">POD-системы</option>
+            <option value="POD-системы">POD-системы</option>
             <option value="Картриджі">Картриджі</option>
           </select>
         </div>
@@ -2901,7 +2931,7 @@ function addInitialProducts() {
     {
       id: "7",
       name: 'VAPORESSO XROS 5 MINI',
-      category: 'POD-система',
+      category: 'POD-системы',
       price: 120,
       image: 'https://i.imgur.com/PW1Pqyz.png',
       description: 'Компактна POD-система',
@@ -2960,7 +2990,7 @@ function renderProducts(products) {
     let buttonAction = `addToCartSimple('${product.id}')`;
     
     if (product.flavors && product.flavors.length > 0) {
-      if (product.category === 'POD-системы') {
+      if (product.category === 'POD-система') {
         buttonText = 'Вибрати колір';
       } else if (product.category === 'Картриджі') {
         buttonText = 'Вибрати Ω';
@@ -3092,7 +3122,7 @@ function openFlavorModal(productId) {
   if (!currentProduct) return;
   
   let modalTitle = 'Вибрати смак';
-  if (currentProduct.category === 'POD-система') {
+  if (currentProduct.category === 'POD-системы') {
     modalTitle = 'Виберіть колір';
   } else if (currentProduct.category === 'Картриджі') {
     modalTitle = 'Виберіть опір';
