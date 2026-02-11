@@ -1675,7 +1675,7 @@ html {
       
       <div class="category-card" onclick="filterProducts('Поды')">
         <img src="https://i.imgur.com/PW1Pqyz.png" alt="Поды" class="category-image">
-        <div class="category-name">Поды</div>
+        <div class="category-name">POD-системы</div>
       </div>
       
       <div class="category-card" onclick="filterProducts('Картриджі')">
@@ -2465,7 +2465,7 @@ html {
         <div>
           <div class="admin-product-title">VAPORESSO XROS 5 MINI</div>
           <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Поды • 120.00 zł
+            POD-система • 120.00 zł
           </div>
         </div>
         <div class="admin-product-actions">
@@ -2669,7 +2669,7 @@ html {
           <select id="edit-product-category" required="">
             <option value="Жидкості">Рідини</option>
             <option value="Одноразки">Одноразки</option>
-            <option value="Поды">Поды</option>
+            <option value="Поды">POD-системы</option>
             <option value="Картриджі">Картриджі</option>
           </select>
         </div>
@@ -2901,7 +2901,7 @@ function addInitialProducts() {
     {
       id: "7",
       name: 'VAPORESSO XROS 5 MINI',
-      category: 'Поды',
+      category: 'POD-система',
       price: 120,
       image: 'https://i.imgur.com/PW1Pqyz.png',
       description: 'Компактна POD-система',
@@ -2960,7 +2960,7 @@ function renderProducts(products) {
     let buttonAction = `addToCartSimple('${product.id}')`;
     
     if (product.flavors && product.flavors.length > 0) {
-      if (product.category === 'Поды') {
+      if (product.category === 'POD-система') {
         buttonText = 'Вибрати колір';
       } else if (product.category === 'Картриджі') {
         buttonText = 'Вибрати Ω';
@@ -3092,7 +3092,7 @@ function openFlavorModal(productId) {
   if (!currentProduct) return;
   
   let modalTitle = 'Виберіть смак';
-  if (currentProduct.category === 'Поды') {
+  if (currentProduct.category === 'POD-система') {
     modalTitle = 'Виберіть колір';
   } else if (currentProduct.category === 'Картриджі') {
     modalTitle = 'Виберіть опір';
