@@ -1675,7 +1675,7 @@ html {
       
       <div class="category-card" onclick="filterProducts('POD-система')">
         <img src="https://i.imgur.com/PW1Pqyz.png" alt="Поды" class="category-image">
-        <div class="category-name">POD-системы</div>
+        <div class="category-name">POD-система</div>
       </div>
       
       <div class="category-card" onclick="filterProducts('Картриджі')">
@@ -2697,9 +2697,9 @@ html {
         <div class="form-group">
           <label>Категорія</label>
           <select id="edit-product-category" required="">
-            <option value="Жидкості">Рідини</option>
+            <option value="Рідини">Рідини</option>
             <option value="Одноразки">Одноразки</option>
-            <option value="POD-системы">POD-системы</option>
+            <option value="POD-система">POD-системы</option>
             <option value="Картриджі">Картриджі</option>
           </select>
         </div>
@@ -2931,7 +2931,7 @@ function addInitialProducts() {
     {
       id: "7",
       name: 'VAPORESSO XROS 5 MINI',
-      category: 'POD-системы',
+      category: 'POD-система',
       price: 120,
       image: 'https://i.imgur.com/PW1Pqyz.png',
       description: 'Компактна POD-система',
@@ -3122,7 +3122,7 @@ function openFlavorModal(productId) {
   if (!currentProduct) return;
   
   let modalTitle = 'Вибрати смак';
-  if (currentProduct.category === 'POD-системы') {
+  if (currentProduct.category === 'POD-система') {
     modalTitle = 'Виберіть колір';
   } else if (currentProduct.category === 'Картриджі') {
     modalTitle = 'Виберіть опір';
@@ -3459,7 +3459,7 @@ function openAddProductModal() {
   document.getElementById('edit-modal-title').textContent = 'Додати новий товар';
   
   document.getElementById('edit-product-name').value = '';
-  document.getElementById('edit-product-category').value = 'Жидкості';
+  document.getElementById('edit-product-category').value = 'Рідини';
   document.getElementById('edit-product-price').value = '';
   document.getElementById('edit-product-image').value = '';
   document.getElementById('edit-product-description').value = '';
