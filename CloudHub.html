@@ -3692,9 +3692,9 @@ function copyOrderToClipboard() {
   message += `💰 *РАЗОМ ДО ОПЛАТИ:* ${total.toFixed(2)} zł\n\n`;
   
   if (selectedDelivery === 'INPOST' && total >= 135) {
-    message += `🚚 *Доставка:* БЕЗКОШТОВНО (замовлення від 135 zł або 3 жиж)\n`;
+    message += `🚚 *Доставка:* 20zł\n`;
   } else if (selectedDelivery === 'INPOST') {
-    message += `🚚 *Доставка:* 20 zł (безкоштовно від 135 zł або 3 жиж)\n`;
+    message += `🚚 *Доставка:* 20 zł\n`;
   } else {
     message += `🚚 *Доставка:* Особиста зустріч (обговоріть деталі - місто: Tychy)\n`;
   }
