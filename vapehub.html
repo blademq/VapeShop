@@ -2769,8 +2769,6 @@ const db = firebase.firestore();
 const database = firebase.database();
 
 // ========== АДМИН КРЕДЕНШИАЛЫ ==========
-// Логин: admin
-// Пароль: CloudHub2024!
 // Вы можете изменить эти данные в Firebase Authentication
 
 // ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ==========
@@ -3882,10 +3880,8 @@ document.addEventListener('keydown', function(e) {
 function createDefaultAdmin() {
   // Эта функция должна быть вызвана один раз для создания админа
   // Учетные данные по умолчанию:
-  // Логин: admin
-  // Пароль: CloudHub2024!
-  const email = "admin@cloudhub.com";
-  const password = "CloudHub2024!";
+  const email = "";
+  const password = "";
   
   auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
