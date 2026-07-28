@@ -1,3 +1,4 @@
+
 <html lang="ru"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,12 +45,7 @@ body {
     radial-gradient(circle at 85% 30%, rgba(139, 0, 0, 0.08) 0%, transparent 20%);
 }
 
-/* ==========================================
-   HEADER - АДАПТИВНЫЙ
-   ========================================== */
-
 header {
-  
   padding: clamp(12px, 2vw, 16px) clamp(15px, 3vw, 20px);
   display: flex;
   justify-content: space-between;
@@ -69,7 +65,6 @@ header {
   cursor: pointer;
   padding: 5px 15px;
   border-radius: 15px;
-  
   transition: all 0.3s ease;
 }
 
@@ -131,10 +126,6 @@ header {
   color: white;
 }
 
-/* ==========================================
-   ПОИСК - АДАПТИВНЫЙ
-   ========================================== */
-
 .search-container {
   margin: clamp(15px, 3vw, 20px);
 }
@@ -183,10 +174,6 @@ header {
   opacity: 0.7;
 }
 
-/* ==========================================
-   КАТЕГОРИИ - АДАПТИВНАЯ СЕТКА
-   ========================================== */
-
 .categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -199,34 +186,19 @@ header {
 }
 
 @media (max-width: 360px) {
-  .categories {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .categories { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (min-width: 361px) and (max-width: 540px) {
-  .categories {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .categories { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (min-width: 541px) and (max-width: 768px) {
-  .categories {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  .categories { grid-template-columns: repeat(4, 1fr); }
 }
-
 @media (min-width: 769px) and (max-width: 1024px) {
-  .categories {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  .categories { grid-template-columns: repeat(4, 1fr); }
 }
-
 @media (min-width: 1025px) {
-  .categories {
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 900px;
-  }
+  .categories { grid-template-columns: repeat(4, 1fr); max-width: 900px; }
 }
 
 .category-card {
@@ -247,9 +219,7 @@ header {
 .category-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 3px;
   background: var(--gradient);
   transform: translateY(-100%);
@@ -263,9 +233,7 @@ header {
   box-shadow: 0 10px 20px rgba(139, 0, 0, 0.15);
 }
 
-.category-card:hover::before {
-  transform: translateY(0);
-}
+.category-card:hover::before { transform: translateY(0); }
 
 .category-image {
   width: clamp(70px, 10vw, 60px);
@@ -291,13 +259,7 @@ header {
   transition: all 0.3s;
 }
 
-.category-card:hover .category-name {
-  color: var(--light);
-}
-
-/* ==========================================
-   ТОВАРЫ - АДАПТИВНАЯ СЕТКА
-   ========================================== */
+.category-card:hover .category-name { color: var(--light); }
 
 .products-grid {
   padding: 0 clamp(15px, 3vw, 20px);
@@ -309,41 +271,12 @@ header {
   margin-right: auto;
 }
 
-@media (max-width: 480px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 481px) and (max-width: 640px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 1441px) {
-  .products-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
+@media (max-width: 480px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 481px) and (max-width: 640px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 641px) and (max-width: 768px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 769px) and (max-width: 1024px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1025px) and (max-width: 1440px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1441px) { .products-grid { grid-template-columns: repeat(5, 1fr); } }
 
 .product-card {
   background: var(--dark-light);
@@ -360,10 +293,7 @@ header {
 .product-card::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: var(--gradient);
   opacity: 0;
   transition: opacity 0.3s;
@@ -379,9 +309,7 @@ header {
     0 0 0 1px rgba(139, 0, 0, 0.1);
 }
 
-.product-card:hover::after {
-  opacity: 0.05;
-}
+.product-card:hover::after { opacity: 0.05; }
 
 .product-image {
   height: clamp(120px, 20vw, 140px);
@@ -397,18 +325,13 @@ header {
 .product-image::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(45deg, transparent 30%, rgba(139, 0, 0, 0.1) 50%, transparent 70%);
   transform: translateX(-100%);
   transition: transform 0.6s;
 }
 
-.product-card:hover .product-image::before {
-  transform: translateX(100%);
-}
+.product-card:hover .product-image::before { transform: translateX(100%); }
 
 .product-image img {
   max-width: 100%;
@@ -419,9 +342,7 @@ header {
   transition: transform 0.3s;
 }
 
-.product-card:hover .product-image img {
-  transform: scale(1.05);
-}
+.product-card:hover .product-image img { transform: scale(1.05); }
 
 .product-info {
   padding: clamp(12px, 2vw, 15px);
@@ -477,10 +398,8 @@ header {
 .btn-select::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
@@ -491,20 +410,11 @@ header {
   box-shadow: 0 8px 20px rgba(139, 0, 0, 0.4);
 }
 
-.btn-select:hover::before {
-  left: 100%;
-}
-
-/* ==========================================
-   МОДАЛЬНЫЕ ОКНА - АДАПТИВНЫЕ
-   ========================================== */
+.btn-select:hover::before { left: 100%; }
 
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(13, 10, 10, 0.98);
   display: flex;
   align-items: center;
@@ -517,10 +427,7 @@ header {
   backdrop-filter: blur(10px);
 }
 
-.modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+.modal-overlay.active { opacity: 1; visibility: visible; }
 
 .modal-container {
   background: var(--dark-light);
@@ -539,9 +446,7 @@ header {
   overflow: hidden;
 }
 
-.modal-overlay.active .modal-container {
-  transform: translateY(0) scale(1);
-}
+.modal-overlay.active .modal-container { transform: translateY(0) scale(1); }
 
 .modal-header {
   display: flex;
@@ -592,10 +497,6 @@ header {
   padding: clamp(15px, 3vw, 20px);
 }
 
-/* ==========================================
-   ВЫБОР ДОСТАВКИ - АДАПТИВНЫЙ
-   ========================================== */
-
 .delivery-options {
   display: flex;
   flex-direction: column;
@@ -620,9 +521,7 @@ header {
 .delivery-option::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 2px;
   background: var(--gradient);
   transform: translateX(-100%);
@@ -635,9 +534,7 @@ header {
   transform: translateX(5px);
 }
 
-.delivery-option:hover::before {
-  transform: translateX(0);
-}
+.delivery-option:hover::before { transform: translateX(0); }
 
 .delivery-option.selected {
   background: rgba(139, 0, 0, 0.2);
@@ -659,10 +556,7 @@ header {
   box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
 }
 
-.delivery-info {
-  flex: 1;
-  min-width: 0;
-}
+.delivery-info { flex: 1; min-width: 0; }
 
 .delivery-name {
   font-weight: 700;
@@ -689,10 +583,6 @@ header {
   opacity: 1;
   transform: scale(1.2);
 }
-
-/* ==========================================
-   СПИСОК ВКУСОВ - АДАПТИВНЫЙ (МНОЖЕСТВЕННЫЙ ВЫБОР)
-   ========================================== */
 
 .multi-select-info {
   background: linear-gradient(135deg, rgba(139, 0, 0, 0.15), rgba(165, 42, 42, 0.15));
@@ -722,17 +612,8 @@ header {
   gap: clamp(8px, 1.5vw, 10px);
 }
 
-@media (max-width: 640px) {
-  .flavor-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 641px) {
-  .flavor-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+@media (max-width: 640px) { .flavor-list { grid-template-columns: 1fr; } }
+@media (min-width: 641px) { .flavor-list { grid-template-columns: repeat(2, 1fr); } }
 
 .flavor-item {
   background: rgba(139, 0, 0, 0.08);
@@ -751,10 +632,7 @@ header {
 .flavor-item::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: var(--gradient);
   opacity: 0;
   transition: opacity 0.3s;
@@ -766,9 +644,7 @@ header {
   transform: translateY(-2px);
 }
 
-.flavor-item:hover::before {
-  opacity: 0.1;
-}
+.flavor-item:hover::before { opacity: 0.1; }
 
 .flavor-item.selected {
   background: rgba(139, 0, 0, 0.2);
@@ -776,9 +652,7 @@ header {
   box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
 }
 
-.flavor-item.selected::before {
-  opacity: 0.15;
-}
+.flavor-item.selected::before { opacity: 0.15; }
 
 .flavor-name {
   font-weight: 600;
@@ -816,15 +690,9 @@ header {
   background: linear-gradient(to top, rgba(139, 0, 0, 0.1), transparent);
 }
 
-@media (min-width: 641px) {
-  .modal-footer {
-    flex-direction: row;
-  }
-}
+@media (min-width: 641px) { .modal-footer { flex-direction: row; } }
 
-.modal-footer .btn-primary {
-  flex: 1;
-}
+.modal-footer .btn-primary { flex: 1; }
 
 .btn-primary {
   background: var(--gradient);
@@ -849,10 +717,8 @@ header {
 .btn-primary::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
@@ -863,9 +729,7 @@ header {
   box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
 }
 
-.btn-primary:hover::before {
-  left: 100%;
-}
+.btn-primary:hover::before { left: 100%; }
 
 .btn-secondary {
   background: transparent;
@@ -885,10 +749,6 @@ header {
   border-color: var(--primary);
   transform: translateY(-2px);
 }
-
-/* ==========================================
-   НИЖНЯЯ НАВИГАЦИЯ - ПРЕМИУМ
-   ========================================== */
 
 .nav-footer {
   position: fixed;
@@ -940,9 +800,7 @@ header {
 }
 
 .nav-item.active i,
-.nav-item.active span {
-  color: white;
-}
+.nav-item.active span { color: white; }
 
 .cart-badge-nav {
   position: absolute;
@@ -961,13 +819,7 @@ header {
   border: 2px solid rgb(255 16 16 / 95%);
 }
 
-/* ==========================================
-   СТРАНИЦА КОРЗИНЫ - АДАПТИВНАЯ
-   ========================================== */
-
-.cart-page {
-  display: none;
-}
+.cart-page { display: none; }
 
 .back-btn {
   display: flex;
@@ -991,9 +843,7 @@ header {
   transition: transform 0.3s;
 }
 
-.back-btn:hover i {
-  transform: translateX(-3px);
-}
+.back-btn:hover i { transform: translateX(-3px); }
 
 .cart-items {
   padding: 0 clamp(15px, 3vw, 20px);
@@ -1020,10 +870,7 @@ header {
   transform: translateX(5px);
 }
 
-.cart-item-info {
-  flex: 1;
-  min-width: 0;
-}
+.cart-item-info { flex: 1; min-width: 0; }
 
 .cart-item-name {
   font-weight: 600;
@@ -1119,10 +966,8 @@ header {
 .telegram-payment::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
@@ -1133,9 +978,7 @@ header {
   box-shadow: 0 10px 25px rgba(42, 171, 238, 0.4);
 }
 
-.telegram-payment:hover::before {
-  left: 100%;
-}
+.telegram-payment:hover::before { left: 100%; }
 
 .payment-info {
   margin-top: clamp(15px, 3vw, 20px);
@@ -1191,10 +1034,6 @@ header {
   font-size: clamp(14px, 2.5vw, 16px);
 }
 
-/* ==========================================
-   АДМИН-ПАНЕЛЬ И АВТОРИЗАЦИЯ
-   ========================================== */
-
 .admin-page {
   display: none;
   padding: 20px;
@@ -1228,10 +1067,7 @@ header {
   font-size: 24px;
 }
 
-.login-input-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
+.login-input-group { margin-bottom: 20px; text-align: left; }
 
 .login-input-group label {
   display: block;
@@ -1326,10 +1162,7 @@ header {
   box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
 }
 
-.products-list {
-  display: grid;
-  gap: 15px;
-}
+.products-list { display: grid; gap: 15px; }
 
 .admin-product-card {
   background: rgba(139, 0, 0, 0.08);
@@ -1380,33 +1213,21 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-edit {
-  background: var(--warning);
-  color: white;
-}
-
+.btn-edit { background: var(--warning); color: white; }
 .btn-edit:hover {
   background: #FF9800;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(255, 167, 38, 0.3);
 }
 
-.btn-delete {
-  background: var(--danger);
-  color: white;
-}
-
+.btn-delete { background: var(--danger); color: white; }
 .btn-delete:hover {
   background: #FF4040;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(255, 82, 82, 0.3);
 }
 
-.btn-add {
-  background: var(--success);
-  color: white;
-}
-
+.btn-add { background: var(--success); color: white; }
 .btn-add:hover {
   background: #43A047;
   transform: translateY(-2px);
@@ -1451,9 +1272,7 @@ header {
   transform: scale(1.1);
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
+.form-group { margin-bottom: 15px; }
 
 .form-group label {
   display: block;
@@ -1482,16 +1301,9 @@ header {
   box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 60px;
-}
+.form-group textarea { resize: vertical; min-height: 60px; }
 
-.add-flavor-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
+.add-flavor-container { display: flex; gap: 10px; margin-top: 10px; }
 
 .add-flavor-container input {
   flex: 1;
@@ -1502,7 +1314,6 @@ header {
   color: var(--light);
 }
 
-/* Уведомления о синхронизации */
 .sync-notification {
   position: fixed;
   top: 20px;
@@ -1520,56 +1331,30 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.sync-notification.error {
-  background: var(--danger);
-}
+.sync-notification.error { background: var(--danger); }
 
 @keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-/* Скроллбар для модальных окон */
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
+.modal-content::-webkit-scrollbar { width: 8px; }
 .modal-content::-webkit-scrollbar-track {
   background: rgba(139, 0, 0, 0.1);
   border-radius: 10px;
 }
-
 .modal-content::-webkit-scrollbar-thumb {
   background: var(--gradient);
   border-radius: 10px;
 }
+.modal-content::-webkit-scrollbar-thumb:hover { background: var(--gradient-dark); }
 
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-dark);
-}
-
-/* Анимации */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.product-card,
-.category-card {
-  animation: fadeIn 0.3s ease-out;
-}
+.product-card, .category-card { animation: fadeIn 0.3s ease-out; }
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -1579,30 +1364,15 @@ header {
   }
 }
 
-/* Дополнительные улучшения */
-::-webkit-selection {
-  background: rgba(139, 0, 0, 0.5);
-  color: white;
-}
+::-webkit-selection { background: rgba(139, 0, 0, 0.5); color: white; }
+::selection { background: rgba(139, 0, 0, 0.5); color: white; }
 
-::selection {
-  background: rgba(139, 0, 0, 0.5);
-  color: white;
-}
+html { scroll-behavior: smooth; }
 
-/* Плавный скролл */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Эффект параллакса для контента */
 @media (min-width: 768px) {
-  .product-card:hover .product-image {
-    transform: translateY(-5px);
-  }
+  .product-card:hover .product-image { transform: translateY(-5px); }
 }
 
-/* Улучшенные тени и глубины */
 .shadow-elegant {
   box-shadow: 
     0 10px 20px rgba(0, 0, 0, 0.1),
@@ -1610,20 +1380,11 @@ html {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Градиентные обводки */
-.gradient-border {
-  position: relative;
-  border-radius: 20px;
-  padding: 3px;
-}
-
+.gradient-border { position: relative; border-radius: 20px; padding: 3px; }
 .gradient-border::before {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
   background: var(--gradient);
   border-radius: 22px;
   z-index: -1;
@@ -1653,7 +1414,6 @@ html {
 </header>
 
 <main>
-  <!-- Главная страница магазина -->
   <div id="shop-page" style="display: block;">
     <div class="search-container">
       <div class="search-box">
@@ -1684,108 +1444,21 @@ html {
       </div>
     </div>
     
-    <div class="products-grid" id="products-container"><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/vEq09Ta.png" alt="Elfliq 30ml 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">Elfliq 30ml 5%</div>
-        <div class="product-category">Рідини</div>
-        <div class="product-price">45.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('1')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/IeTuHXS.png" alt="Chaser Lux 30ml 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">Chaser Lux 30ml 5%</div>
-        <div class="product-category">Рідини</div>
-        <div class="product-price">50.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('2')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/Z0dIMUY.png" alt="Chaser Lux 30ml 6%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">Chaser Lux 30ml 6%</div>
-        <div class="product-category">Рідини</div>
-        <div class="product-price">50.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('3')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/n8NuNv9.png" alt="Chaser for pods 30ml 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">Chaser for pods 30ml 5%</div>
-        <div class="product-category">Рідини</div>
-        <div class="product-price">50.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('4')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/4LDRirY.png" alt="CHASER LIMITINI EDITINI 30ML 5%" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">CHASER LIMITINI EDITINI 30ML 5%</div>
-        <div class="product-category">Рідини</div>
-        <div class="product-price">50.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('5')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/xhr3S0G.png" alt="ELFBAR RAYA D3 - 25.000 PUFFS" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">ELFBAR RAYA D3 - 25.000 PUFFS</div>
-        <div class="product-category">Одноразки</div>
-        <div class="product-price">80.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('6')">Вибрати смак</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/PW1Pqyz.png" alt="VAPORESSO XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">VAPORESSO XROS 5 MINI</div>
-        <div class="product-category">POD-системы</div>
-        <div class="product-price">120.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('7')">Вибрати колiр</button>
-      </div>
-    </div><div class="product-card">
-      <div class="product-image">
-        <img src="https://i.imgur.com/gvDaEyg.png" alt="Катридж XROS 5 MINI" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-      </div>
-      <div class="product-info">
-        <div class="product-name">Катридж XROS 5 MINI</div>
-        <div class="product-category">Картриджі</div>
-        <div class="product-price">25.00 zł</div>
-        <button class="btn-select" onclick="openFlavorModal('8')">Вибрати Ω</button>
-      </div>
-    </div></div>
+    <div class="products-grid" id="products-container"></div>
   </div>
   
-  <!-- Страница корзины -->
   <div id="cart-page" class="cart-page" style="display: none;">
     <div class="back-btn" onclick="goToHome()">
       <i class="fas fa-arrow-left"></i>
       <span>Назад в каталог</span>
     </div>
     
-    <div class="cart-items" id="cart-items-container">
-      <!-- Товары в корзине -->
-    </div>
+    <div class="cart-items" id="cart-items-container"></div>
     
-    <div id="cart-summary-container">
-      <!-- Сумма заказа -->
-    </div>
+    <div id="cart-summary-container"></div>
   </div>
 
-  <!-- Админ-панель (только после авторизации) -->
   <div id="admin-page" class="admin-page" style="display: none;">
-    <!-- Форма авторизации -->
     <div id="login-form" class="login-container" style="display: block;">
       <h2><i class="fas fa-lock"></i> Вхід в адмін-панель</h2>
       <div class="login-input-group">
@@ -1804,7 +1477,6 @@ html {
       </button>
     </div>
 
-    <!-- Панель управления (после входа) -->
     <div id="admin-panel" style="display: none;">
       <div class="admin-header">
         <div>
@@ -1824,753 +1496,11 @@ html {
         </div>
       </div>
       
-      <div class="products-list" id="admin-products-list"><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">Elfliq 30ml 5%</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Рідини • 45.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('1')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('1')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (34):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>Apple Pear</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Apple Pear')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blackberry Lemon</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blackberry Lemon')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blackcurrant aniseed</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blackcurrant aniseed')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blueberry</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blueberry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blueberry Raspberry Pomegranate</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blueberry Raspberry Pomegranate')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blueberry Rose Mint</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blueberry Rose Mint')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blueberry Sour Raspberry</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blueberry Sour Raspberry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blue Razz Ice</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blue Razz Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blue Razz Lemonade</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blue Razz Lemonade')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Cherry</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Cherry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Cherry Cola</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Cherry Cola')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Cherry Lemon Peach</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Cherry Lemon Peach')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Cola</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Cola')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Cool Mint</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Cool Mint')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Double Apple</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Double Apple')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Watermelon Cherry</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Watermelon Cherry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Cherry Lemon</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Cherry Lemon')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Apple Peach</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Apple Peach')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blackcurrant Aniseed</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Blackcurrant Aniseed')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Pink Lemonade Soda</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Pink Lemonade Soda')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Elf Jack</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Elf Jack')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Grape</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Grape')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>P&amp;B Cloudd</span>
-                <button onclick="deleteFlavorFromProduct('1', 'P&amp;B Cloudd')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Pina Colada</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Pina Colada')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Pink Grapefruit</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Pink Grapefruit')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Pink Lemonade</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Pink Lemonade')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Sour Apple</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Sour Apple')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Ice</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Kiwi</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Kiwi')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Raspberry Cherry Ice</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Raspberry Cherry Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Snoow</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Strawberry Snoow')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Rhubarb Snoow</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Rhubarb Snoow')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Peach Ice</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Peach Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Spearmint</span>
-                <button onclick="deleteFlavorFromProduct('1', 'Spearmint')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">Chaser Lux 30ml 5%</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Рідини • 50.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('2')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('2')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (7):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>Tropic Punch Orange</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Tropic Punch Orange')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Coconut Melon</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Coconut Melon')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Vitamine</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Vitamine')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Kiwi Passionfruit Guava</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Kiwi Passionfruit Guava')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blueberry Raspberry</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Blueberry Raspberry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Sangria</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Sangria')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Turbo mint</span>
-                <button onclick="deleteFlavorFromProduct('2', 'Turbo mint')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">Chaser Lux 30ml 6%</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Рідини • 50.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('3')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('3')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (8):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>Sour Apple</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Sour Apple')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blackberry Lemonade</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Blackberry Lemonade')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Sour Watermelon Candy</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Sour Watermelon Candy')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Peach Yogurt</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Peach Yogurt')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blueberry Raspberry</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Blueberry Raspberry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Grape Mint</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Grape Mint')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Watermelon Raspberry</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Watermelon Raspberry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Peach Tea</span>
-                <button onclick="deleteFlavorFromProduct('3', 'Peach Tea')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">Chaser for pods 30ml 5%</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Рідини • 50.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('4')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('4')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (9):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>Ягоди</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Ягоди')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Блакитна малина</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Блакитна малина')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>М'ята</span>
-                <button onclick="deleteFlavorFromProduct('4', 'М\'ята')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Персик</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Персик')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Полуниця</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Полуниця')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Кавун</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Кавун')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Диня</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Диня')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Грейпфрут</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Грейпфрут')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Жовта малина</span>
-                <button onclick="deleteFlavorFromProduct('4', 'Жовта малина')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">CHASER LIMITINI EDITINI 30ML 5%</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Рідини • 50.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('5')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('5')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (6):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>ALOE MINT</span>
-                <button onclick="deleteFlavorFromProduct('5', 'ALOE MINT')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>JASMINE PEACH</span>
-                <button onclick="deleteFlavorFromProduct('5', 'JASMINE PEACH')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>PINEAPPLE PASSION LIME</span>
-                <button onclick="deleteFlavorFromProduct('5', 'PINEAPPLE PASSION LIME')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>BALERRINA CAPPUCCINO</span>
-                <button onclick="deleteFlavorFromProduct('5', 'BALERRINA CAPPUCCINO')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>GLORBO FRUTTODRILLO</span>
-                <button onclick="deleteFlavorFromProduct('5', 'GLORBO FRUTTODRILLO')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>TUNG TUNG TUNG SAHUR</span>
-                <button onclick="deleteFlavorFromProduct('5', 'TUNG TUNG TUNG SAHUR')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">ELFBAR RAYA D3 - 25.000 PUFFS</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Одноразки • 80.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('6')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('6')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (8):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>Blueberry Ice</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Blueberry Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Grape</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Strawberry Grape')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blackberry Cranberry</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Blackberry Cranberry')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Watermelon Ice</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Watermelon Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Watermelon</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Strawberry Watermelon')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Peach Ice</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Peach Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Strawberry Ice</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Strawberry Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>Blue Razz Ice</span>
-                <button onclick="deleteFlavorFromProduct('6', 'Blue Razz Ice')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">VAPORESSO XROS 5 MINI</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            POD-система • 120.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('7')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('7')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (1):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>Немає в наявності</span>
-                <button onclick="deleteFlavorFromProduct('7', 'Немає в наявності')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div><div class="admin-product-card">
-      <div class="admin-product-header">
-        <div>
-          <div class="admin-product-title">Катридж XROS 5 MINI</div>
-          <div style="color: var(--gray); font-size: 14px; margin-top: 5px;">
-            Картриджі • 25.00 zł
-          </div>
-        </div>
-        <div class="admin-product-actions">
-          <button class="btn-admin btn-edit" onclick="openEditProductModal('8')">
-            <i class="fas fa-edit"></i>
-            Редагувати
-          </button>
-          <button class="btn-admin btn-delete" onclick="deleteProduct('8')">
-            <i class="fas fa-trash"></i>
-            Видалити
-          </button>
-        </div>
-      </div>
-      
-        <div style="margin-top: 15px;">
-          <strong style="color: var(--gray);">Смаки/Варіанти (2):</strong>
-          <div class="flavors-grid">
-            
-              <div class="flavor-tag">
-                <span>3ml 0.4Ω</span>
-                <button onclick="deleteFlavorFromProduct('8', '3ml 0.4Ω')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-              <div class="flavor-tag">
-                <span>2ml 0.6Ω</span>
-                <button onclick="deleteFlavorFromProduct('8', '2ml 0.6Ω')">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            
-          </div>
-        </div>
-      
-    </div></div>
+      <div class="products-list" id="admin-products-list"></div>
     </div>
   </div>
 </main>
 
-<!-- Исправленная нижняя навигация -->
 <div class="nav-footer">
   <div class="nav-item active" onclick="goToHome()">
     <i class="fas fa-store"></i>
@@ -2588,7 +1518,7 @@ html {
     <span>Адмін</span>
   </div>
 </div>
-<!-- Модальное окно выбора вкуса (с множественным выбором) -->
+
 <div id="flavor-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
@@ -2604,9 +1534,7 @@ html {
         <span>Ви можете вибрати кілька варіантів. Вибрано: <span class="selected-count" id="selected-count">0</span></span>
       </div>
       
-      <div class="flavor-list" id="flavor-list">
-        <!-- Список вкусов будет добавлен через JS -->
-      </div>
+      <div class="flavor-list" id="flavor-list"></div>
     </div>
     
     <div class="modal-footer">
@@ -2621,7 +1549,6 @@ html {
   </div>
 </div>
 
-<!-- Модальное окно выбора способа доставки -->
 <div id="delivery-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
@@ -2677,7 +1604,6 @@ html {
   </div>
 </div>
 
-<!-- Модальное окно редактирования товара -->
 <div id="edit-product-modal" class="modal-overlay">
   <div class="modal-container">
     <div class="modal-header">
@@ -2697,9 +1623,9 @@ html {
         <div class="form-group">
           <label>Категорія</label>
           <select id="edit-product-category" required="">
-            <option value="Жидкості">Рідини</option>
+            <option value="Рідини">Рідини</option>
             <option value="Одноразки">Одноразки</option>
-            <option value="POD-системы">POD-системы</option>
+            <option value="POD-система">POD-системи</option>
             <option value="Картриджі">Картриджі</option>
           </select>
         </div>
@@ -2751,7 +1677,45 @@ html {
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 <script>
-// ========== FIREBASE CONFIGURATION ==========
+// ==========================================================
+// ВАЖНОЕ ЗАМЕЧАНИЕ ПО БЕЗОПАСНОСТИ (прочитайте перед деплоем)
+// ==========================================================
+// 1. Значения ниже (apiKey и т.п.) — это ПУБЛИЧНАЯ конфигурация Firebase.
+//    Google по дизайну делает её видимой в клиенте (см. официальную
+//    документацию Firebase). Она НЕ является секретом сама по себе.
+//    Реальная защита строится на Firestore Security Rules (см. ниже) —
+//    без них апи-ключ не имеет значения, доступ и так открыт всем.
+//
+// 2. Firestore Security Rules нужно настроить в консоли Firebase
+//    (Firestore Database -> Rules), например так:
+//
+//    rules_version = '2';
+//    service cloud.firestore {
+//      match /databases/{database}/documents {
+//        match /products/{productId} {
+//          allow read: if true;
+//          allow write: if request.auth != null;
+//        }
+//      }
+//    }
+//
+//    Без этих правил ЛЮБОЙ человек может открыть консоль браузера (F12)
+//    и напрямую менять/удалять товары в базе, независимо от того, что
+//    написано в JS-коде ниже.
+//
+// 3. Учётную запись администратора нужно создавать ОДИН РАЗ вручную
+//    через Firebase Console -> Authentication -> Add user. Форма входа
+//    на сайте больше НЕ создаёт новых пользователей автоматически —
+//    это было уязвимостью в предыдущей версии (любой человек, введя
+//    произвольный логин/пароль, мог сам себе создать админский доступ).
+//
+// 4. Если где-то используется Telegram Bot API токен — его нельзя
+//    хранить в этом файле или любом клиентском JS. Такой токен виден
+//    в исходниках браузера всегда, без исключений. Отправку сообщений
+//    через бота нужно делать с сервера (например, Cloud Function),
+//    а с фронтенда обращаться уже к своему серверному эндпоинту без токена.
+// ==========================================================
+
 const firebaseConfig = {
   apiKey: "AIzaSyDXQjUEO-Yn3poaAq5nRjznMykCdr1fhnM",
   authDomain: "vapehub-70582.firebaseapp.com",
@@ -2762,16 +1726,11 @@ const firebaseConfig = {
   measurementId: "G-B6Q0WKP8DD"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 const database = firebase.database();
 
-// ========== АДМИН КРЕДЕНШИАЛЫ ==========
-// Вы можете изменить эти данные в Firebase Authentication
-
-// ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ==========
 let allProducts = [];
 let cart = [];
 let currentProduct = null;
@@ -2780,22 +1739,16 @@ let selectedDelivery = null;
 let editingProductId = null;
 let isAdminLoggedIn = false;
 
-// ========== ОСНОВНЫЕ ФУНКЦИИ ==========
 document.addEventListener('DOMContentLoaded', function() {
-  // Проверяем авторизацию
   checkAuthState();
   
-  // Загружаем корзину из localStorage
   const savedCart = localStorage.getItem('vapeCart');
   if (savedCart) {
     cart = JSON.parse(savedCart);
     updateCartBadge();
   }
   
-  // Загружаем товары из Firebase
   loadProductsFromFirebase();
-  
-  // Настраиваем слушатель для обновлений в реальном времени
   setupRealtimeUpdates();
 });
 
@@ -2812,12 +1765,10 @@ function checkAuthState() {
 }
 
 function setupRealtimeUpdates() {
-  // Слушаем изменения в Firestore
   db.collection("products").onSnapshot((snapshot) => {
     console.log("Получены обновления товаров из Firebase");
     loadProductsFromFirebase();
     
-    // Показываем уведомление пользователю
     if (document.getElementById('shop-page').style.display !== 'none') {
       showSyncNotification("Товары обновлены в реальном времени!", "success");
     }
@@ -2834,7 +1785,6 @@ function loadProductsFromFirebase() {
         allProducts.push({ id: doc.id, ...doc.data() });
       });
       
-      // Если нет товаров, добавляем начальные данные
       if (allProducts.length === 0) {
         addInitialProducts();
       } else {
@@ -2929,7 +1879,7 @@ function addInitialProducts() {
     {
       id: "7",
       name: 'VAPORESSO XROS 5 MINI',
-      category: 'POD-системы',
+      category: 'POD-система',
       price: 120,
       image: 'https://i.imgur.com/PW1Pqyz.png',
       description: 'Компактна POD-система',
@@ -3048,43 +1998,31 @@ function updateCartBadge() {
   document.getElementById('header-cart-badge').textContent = count;
 }
 
-// ========== АВТОРИЗАЦИЯ АДМИНА ==========
+// ==========================================================
+// АВТОРИЗАЦИЯ АДМИНА (исправлено)
+// ==========================================================
+// Больше НЕ создаёт нового пользователя автоматически при неудачном
+// логине. Аккаунт админа нужно один раз создать вручную через
+// Firebase Console -> Authentication -> Add user.
 function loginAdmin() {
   const username = document.getElementById('admin-username').value.trim();
   const password = document.getElementById('admin-password').value.trim();
   const errorElement = document.getElementById('login-error');
   
-  // Проверяем валидность
   if (!username || !password) {
     errorElement.textContent = 'Будь ласка, заповніть всі поля';
     errorElement.style.display = 'block';
     return;
   }
   
-  // Firebase Authentication
   auth.signInWithEmailAndPassword(`${username}@cloudhub.com`, password)
-    .then((userCredential) => {
-      // Успешный вход
+    .then(() => {
       errorElement.style.display = 'none';
       showNotification('Успішний вхід в адмін-панель');
     })
     .catch((error) => {
-      // Пробуем альтернативный метод (создаем пользователя если нет)
-      if (error.code === 'auth/user-not-found') {
-        // Создаем нового админа
-        auth.createUserWithEmailAndPassword(`${username}@cloudhub.com`, password)
-          .then((userCredential) => {
-            errorElement.style.display = 'none';
-            showNotification('Адміністратора створено та успішно авторизовано');
-          })
-          .catch((createError) => {
-            errorElement.textContent = 'Помилка створення адміністратора: ' + createError.message;
-            errorElement.style.display = 'block';
-          });
-      } else {
-        errorElement.textContent = 'Неправильний логін або пароль';
-        errorElement.style.display = 'block';
-      }
+      errorElement.textContent = 'Неправильний логін або пароль';
+      errorElement.style.display = 'block';
     });
 }
 
@@ -3103,7 +2041,6 @@ function showAdminPanel() {
   document.getElementById('admin-panel').style.display = 'block';
   document.getElementById('current-user').textContent = auth.currentUser ? auth.currentUser.email.split('@')[0] : 'Адмін';
   
-  // Загружаем товары для админ-панели
   renderAdminProducts();
 }
 
@@ -3112,7 +2049,6 @@ function showLoginForm() {
   document.getElementById('admin-panel').style.display = 'none';
 }
 
-// ========== МОДАЛЬНОЕ ОКНО ВКУСОВ ==========
 function openFlavorModal(productId) {
   currentProduct = allProducts.find(p => p.id === productId);
   selectedFlavors = [];
@@ -3120,7 +2056,7 @@ function openFlavorModal(productId) {
   if (!currentProduct) return;
   
   let modalTitle = 'Вибрати смак';
-  if (currentProduct.category === 'POD-системы') {
+  if (currentProduct.category === 'POD-система') {
     modalTitle = 'Виберіть колір';
   } else if (currentProduct.category === 'Картриджі') {
     modalTitle = 'Виберіть опір';
@@ -3238,7 +2174,6 @@ function saveCart() {
   localStorage.setItem('vapeCart', JSON.stringify(cart));
 }
 
-// ========== МОДАЛЬНОЕ ОКНО ДОСТАВКИ ==========
 function openDeliveryModal() {
   selectedDelivery = null;
   document.querySelectorAll('.delivery-option').forEach(item => {
@@ -3275,7 +2210,6 @@ function confirmDeliveryAndCopy() {
   copyOrderToClipboard();
 }
 
-// ========== КОРЗИНА ==========
 function openCartPage() {
   document.getElementById('shop-page').style.display = 'none';
   document.getElementById('cart-page').style.display = 'block';
@@ -3375,7 +2309,6 @@ function removeFromCart(index) {
   }
 }
 
-// ========== АДМИН-ПАНЕЛЬ ==========
 function openAdminPage() {
   if (!isAdminLoggedIn) {
     showNotification('Будь ласка, увійдіть в адмін-панель');
@@ -3457,7 +2390,7 @@ function openAddProductModal() {
   document.getElementById('edit-modal-title').textContent = 'Додати новий товар';
   
   document.getElementById('edit-product-name').value = '';
-  document.getElementById('edit-product-category').value = 'Жидкості';
+  document.getElementById('edit-product-category').value = 'Рідини';
   document.getElementById('edit-product-price').value = '';
   document.getElementById('edit-product-image').value = '';
   document.getElementById('edit-product-description').value = '';
@@ -3583,7 +2516,6 @@ function saveProductChanges() {
   };
   
   if (editingProductId) {
-    // Обновление существующего товара
     db.collection("products").doc(editingProductId).update(productData)
       .then(() => {
         showSyncNotification('Товар оновлено! Зміни будуть видно всім користувачам.', 'success');
@@ -3594,7 +2526,6 @@ function saveProductChanges() {
         showSyncNotification('Помилка оновлення товара', 'error');
       });
   } else {
-    // Добавление нового товара
     const newId = Date.now().toString();
     productData.id = newId;
     
@@ -3653,7 +2584,6 @@ function deleteFlavorFromProduct(productId, flavor) {
   });
 }
 
-// ========== ОТПРАВКА ЗАКАЗА ==========
 function copyOrderToClipboard() {
   if (cart.length === 0) {
     showNotification('Кошик порожній');
@@ -3790,7 +2720,6 @@ function openTelegramDirectly() {
   window.open('https://t.me/managercloudm', '_blank');
 }
 
-// ========== УТИЛИТЫ И УВЕДОМЛЕНИЯ ==========
 function showSyncNotification(message, type = 'success') {
   const notification = document.createElement('div');
   notification.className = 'sync-notification ' + (type === 'error' ? 'error' : '');
@@ -3849,7 +2778,6 @@ function showNotification(message) {
   }, 3000);
 }
 
-// Закрытие модальных окон
 document.getElementById('flavor-modal').addEventListener('click', function(e) {
   if (e.target.id === 'flavor-modal') {
     closeFlavorModal();
@@ -3875,31 +2803,6 @@ document.addEventListener('keydown', function(e) {
     closeEditProductModal();
   }
 });
-
-// Создание администратора по умолчанию
-function createDefaultAdmin() {
-  // Эта функция должна быть вызвана один раз для создания админа
-  // Учетные данные по умолчанию:
-  const email = "";
-  const password = "";
-  
-  auth.createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      console.log("Администратор по умолчанию создан");
-    })
-    .catch((error) => {
-      if (error.code === 'auth/email-already-in-use') {
-        console.log("Администратор уже существует");
-      }
-    });
-}
-
-// Для создания администратора раскомментируйте следующую строку:
-// createDefaultAdmin();
 </script>
-
-
-
-
 
 </body></html>
